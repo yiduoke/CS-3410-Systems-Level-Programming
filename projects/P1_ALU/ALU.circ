@@ -28,44 +28,44 @@
   <lib desc="#I/O" name="5"/>
   <lib desc="#HDL-IP" name="6">
     <tool name="VHDL Entity">
-      <a name="content">--------------------------------------------------------------------------------
--- HEIG-VD, institute REDS, 1400 Yverdon-les-Bains
--- Project :
--- File    :
--- Autor   :
--- Date    :
---
---------------------------------------------------------------------------------
--- Description :
---
---------------------------------------------------------------------------------
-
-library ieee;
-  use ieee.std_logic_1164.all;
-  --use ieee.numeric_std.all;
-
-entity VHDL_Component is
-  port(
-  ------------------------------------------------------------------------------
-  --Insert input ports below
-    horloge_i  : in  std_logic;                    -- input bit example
-    val_i      : in  std_logic_vector(3 downto 0); -- input vector example
-  ------------------------------------------------------------------------------
-  --Insert output ports below
-    max_o      : out std_logic;                    -- output bit example
-    cpt_o      : out std_logic_Vector(3 downto 0)  -- output vector example
-    );
-end VHDL_Component;
-
---------------------------------------------------------------------------------
---Complete your VHDL description below
-architecture type_architecture of VHDL_Component is
-
-
-begin
-
-
-end type_architecture;
+      <a name="content">--------------------------------------------------------------------------------&#13;
+-- HEIG-VD, institute REDS, 1400 Yverdon-les-Bains&#13;
+-- Project :&#13;
+-- File    :&#13;
+-- Autor   :&#13;
+-- Date    :&#13;
+--&#13;
+--------------------------------------------------------------------------------&#13;
+-- Description :&#13;
+--&#13;
+--------------------------------------------------------------------------------&#13;
+&#13;
+library ieee;&#13;
+  use ieee.std_logic_1164.all;&#13;
+  --use ieee.numeric_std.all;&#13;
+&#13;
+entity VHDL_Component is&#13;
+  port(&#13;
+  ------------------------------------------------------------------------------&#13;
+  --Insert input ports below&#13;
+    horloge_i  : in  std_logic;                    -- input bit example&#13;
+    val_i      : in  std_logic_vector(3 downto 0); -- input vector example&#13;
+  ------------------------------------------------------------------------------&#13;
+  --Insert output ports below&#13;
+    max_o      : out std_logic;                    -- output bit example&#13;
+    cpt_o      : out std_logic_Vector(3 downto 0)  -- output vector example&#13;
+    );&#13;
+end VHDL_Component;&#13;
+&#13;
+--------------------------------------------------------------------------------&#13;
+--Complete your VHDL description below&#13;
+architecture type_architecture of VHDL_Component is&#13;
+&#13;
+&#13;
+begin&#13;
+&#13;
+&#13;
+end type_architecture;&#13;
 </a>
     </tool>
   </lib>
@@ -1362,6 +1362,149 @@ end TCL_Generic;
       <a name="facing" val="south"/>
       <a name="width" val="4"/>
       <a name="label" val="A4"/>
+    </comp>
+  </circuit>
+  <circuit name="sixteen_bit_adder">
+    <a name="circuit" val="sixteen_bit_adder"/>
+    <a name="clabel" val=""/>
+    <a name="clabelup" val="east"/>
+    <a name="clabelfont" val="SansSerif bold 16"/>
+    <a name="circuitnamedbox" val="true"/>
+    <a name="circuitvhdlpath" val=""/>
+    <wire from="(150,150)" to="(340,150)"/>
+    <wire from="(150,160)" to="(470,160)"/>
+    <wire from="(520,480)" to="(520,620)"/>
+    <wire from="(470,160)" to="(470,480)"/>
+    <wire from="(600,620)" to="(650,620)"/>
+    <wire from="(320,620)" to="(320,750)"/>
+    <wire from="(450,760)" to="(770,760)"/>
+    <wire from="(340,620)" to="(390,620)"/>
+    <wire from="(340,150)" to="(340,480)"/>
+    <wire from="(710,780)" to="(770,780)"/>
+    <wire from="(150,350)" to="(580,350)"/>
+    <wire from="(150,360)" to="(710,360)"/>
+    <wire from="(650,480)" to="(690,480)"/>
+    <wire from="(150,330)" to="(320,330)"/>
+    <wire from="(150,340)" to="(450,340)"/>
+    <wire from="(390,480)" to="(430,480)"/>
+    <wire from="(580,620)" to="(580,770)"/>
+    <wire from="(790,740)" to="(810,740)"/>
+    <wire from="(710,360)" to="(710,480)"/>
+    <wire from="(320,750)" to="(770,750)"/>
+    <wire from="(650,480)" to="(650,620)"/>
+    <wire from="(470,620)" to="(520,620)"/>
+    <wire from="(450,340)" to="(450,480)"/>
+    <wire from="(580,350)" to="(580,480)"/>
+    <wire from="(390,480)" to="(390,620)"/>
+    <wire from="(450,620)" to="(450,760)"/>
+    <wire from="(580,770)" to="(770,770)"/>
+    <wire from="(520,480)" to="(560,480)"/>
+    <wire from="(320,330)" to="(320,480)"/>
+    <wire from="(780,750)" to="(780,770)"/>
+    <wire from="(730,620)" to="(730,660)"/>
+    <wire from="(730,180)" to="(730,480)"/>
+    <wire from="(150,480)" to="(300,480)"/>
+    <wire from="(710,620)" to="(710,780)"/>
+    <wire from="(150,170)" to="(600,170)"/>
+    <wire from="(150,180)" to="(730,180)"/>
+    <wire from="(600,170)" to="(600,480)"/>
+    <comp lib="0" loc="(130,320)" name="Pin">
+      <a name="facing" val="south"/>
+      <a name="width" val="16"/>
+      <a name="label" val="B16"/>
+    </comp>
+    <comp lib="0" loc="(130,140)" name="Splitter">
+      <a name="fanout" val="4"/>
+      <a name="incoming" val="16"/>
+      <a name="appear" val="right"/>
+      <a name="bit1" val="0"/>
+      <a name="bit2" val="0"/>
+      <a name="bit3" val="0"/>
+      <a name="bit4" val="1"/>
+      <a name="bit5" val="1"/>
+      <a name="bit6" val="1"/>
+      <a name="bit7" val="1"/>
+      <a name="bit8" val="2"/>
+      <a name="bit9" val="2"/>
+      <a name="bit10" val="2"/>
+      <a name="bit11" val="2"/>
+      <a name="bit12" val="3"/>
+      <a name="bit13" val="3"/>
+      <a name="bit14" val="3"/>
+      <a name="bit15" val="3"/>
+    </comp>
+    <comp loc="(340,620)" name="four_bit_adder">
+      <a name="facing" val="south"/>
+    </comp>
+    <comp loc="(470,620)" name="four_bit_adder">
+      <a name="facing" val="south"/>
+    </comp>
+    <comp loc="(600,620)" name="four_bit_adder">
+      <a name="facing" val="south"/>
+    </comp>
+    <comp loc="(730,620)" name="four_bit_adder">
+      <a name="facing" val="south"/>
+    </comp>
+    <comp lib="0" loc="(130,320)" name="Splitter">
+      <a name="fanout" val="4"/>
+      <a name="incoming" val="16"/>
+      <a name="appear" val="right"/>
+      <a name="bit1" val="0"/>
+      <a name="bit2" val="0"/>
+      <a name="bit3" val="0"/>
+      <a name="bit4" val="1"/>
+      <a name="bit5" val="1"/>
+      <a name="bit6" val="1"/>
+      <a name="bit7" val="1"/>
+      <a name="bit8" val="2"/>
+      <a name="bit9" val="2"/>
+      <a name="bit10" val="2"/>
+      <a name="bit11" val="2"/>
+      <a name="bit12" val="3"/>
+      <a name="bit13" val="3"/>
+      <a name="bit14" val="3"/>
+      <a name="bit15" val="3"/>
+    </comp>
+    <comp lib="0" loc="(150,480)" name="Pin">
+      <a name="label" val="Cin"/>
+    </comp>
+    <comp lib="0" loc="(810,740)" name="Pin">
+      <a name="facing" val="west"/>
+      <a name="output" val="true"/>
+      <a name="width" val="16"/>
+      <a name="label" val="sum"/>
+      <a name="labelloc" val="south"/>
+    </comp>
+    <comp lib="0" loc="(790,740)" name="Splitter">
+      <a name="facing" val="west"/>
+      <a name="fanout" val="4"/>
+      <a name="incoming" val="16"/>
+      <a name="bit1" val="0"/>
+      <a name="bit2" val="0"/>
+      <a name="bit3" val="0"/>
+      <a name="bit4" val="1"/>
+      <a name="bit5" val="1"/>
+      <a name="bit6" val="1"/>
+      <a name="bit7" val="1"/>
+      <a name="bit8" val="2"/>
+      <a name="bit9" val="2"/>
+      <a name="bit10" val="2"/>
+      <a name="bit11" val="2"/>
+      <a name="bit12" val="3"/>
+      <a name="bit13" val="3"/>
+      <a name="bit14" val="3"/>
+      <a name="bit15" val="3"/>
+    </comp>
+    <comp lib="0" loc="(730,660)" name="Pin">
+      <a name="facing" val="north"/>
+      <a name="output" val="true"/>
+      <a name="label" val="Cout"/>
+      <a name="labelloc" val="east"/>
+    </comp>
+    <comp lib="0" loc="(130,140)" name="Pin">
+      <a name="facing" val="south"/>
+      <a name="width" val="16"/>
+      <a name="label" val="A16"/>
     </comp>
   </circuit>
 </project>
