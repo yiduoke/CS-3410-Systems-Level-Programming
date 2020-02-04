@@ -870,7 +870,7 @@ end TCL_Generic;
     <comp lib="0" loc="(160,390)" name="Pin">
       <a name="facing" val="south"/>
       <a name="width" val="32"/>
-      <a name="label" val="A"/>
+      <a name="label" val="B"/>
     </comp>
     <comp lib="0" loc="(860,820)" name="Splitter">
       <a name="facing" val="west"/>
@@ -895,7 +895,7 @@ end TCL_Generic;
     </comp>
     <comp lib="0" loc="(220,120)" name="Pin">
       <a name="width" val="32"/>
-      <a name="label" val="B"/>
+      <a name="label" val="A"/>
     </comp>
     <comp loc="(340,1390)" name="four_bit_adder">
       <a name="facing" val="south"/>
