@@ -12,7 +12,7 @@ def right_shift(B, Sa, Op):
     Cin = '0'
     if (Op == 1):
         Cin = binary_B[0]
-    return Sa * str(Cin) + binary_B[:Sa]
+    return Sa * str(Cin) + binary_B[: 32-Sa]
 
 def left_shift_test():
     f = open("left_shift_test.txt", "w")
