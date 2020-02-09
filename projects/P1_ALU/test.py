@@ -78,13 +78,11 @@ def subtracter_test():
         formatted_A = format(A if A >= 0 else (1 << 32) + A, "032b")
         formatted_B = format(B if B >= 0 else (1 << 32) + B, "032b")
         
-        decimal_C = int(C,32)
-        if (len(C) > 32):
-            if ((formatted_A[0] != formatted_B[0]) and (C[0] == formatted_B[0])):
-                V = 1
-            C = C[1:]
-    
-    
+        #if (len(C) > 32):
+        if ((formatted_A[0] != formatted_B[0]) and (C[0] == formatted_B[0])):
+            print("overflowwww")
+            V = 1
+        C = C[1:]
         print(formatted_A + " " + formatted_B + " " + C + " " + str(V))
         f.write(formatted_A + " " + formatted_B + " " + C + " " + str(V) + "\n")
     f.close()
