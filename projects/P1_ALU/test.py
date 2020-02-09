@@ -16,31 +16,49 @@ def right_shift(B, Sa, Op):
 
 def left_shift_test():
     f = open("left_shift_test.txt", "w")
-    print("B[32]                            Sa[5] Cin C[32]")
+    #print("B[32]                            Sa[5] Cin C[32]")
     f.write("B[32]                            Sa[5] Cin C[32]\n")
     for i in range(50000):
         B = random.randint(0, biggest_32_bit)
         Sa = random.randint(0, biggest_5_bit)
         Cin = random.randint(0,1)
         C = left_shift(B, Sa, Cin)
-        print(format(B,"032b") + " " + format(Sa,"05b") + " " + str(Cin) + "   " + C)
+        #print(format(B,"032b") + " " + format(Sa,"05b") + " " + str(Cin) + "   " + C)
         f.write(format(B,"032b") + " " + format(Sa,"05b") + " " + str(Cin) + "   " + C + "\n")
     f.close()
 
 def right_shift_test():
     f = open("right_shift_test.txt", "w")
-    print("B[32]                            Sa[5] Op C[32]\n")
+    #print("B[32]                            Sa[5] Op C[32]\n")
     f.write("B[32]                            Sa[5] Op C[32]\n")
     for i in range(50000):
         B = random.randint(0, biggest_32_bit)
         Sa = random.randint(0, biggest_5_bit)
         Op = random.randint(0,1)
         C = right_shift(B, Sa, Op)
-        print(format(B,"032b") + " " + format(Sa,"05b") + " " + str(Op) + "   " + C)
+        #print(format(B,"032b") + " " + format(Sa,"05b") + " " + str(Op) + "   " + C)
         f.write(format(B,"032b") + " " + format(Sa,"05b") + " " + str(Op) + "  " + C + "\n")
+    f.close()
+
+def adder_test():
+    f = open("adder.txt", "w")
+    #print("A[32]                            B[32]                            Cin C[32]                            V\n")
+    f.write("A[32]                            B[32]                            Cin C[32]                            V\n")
+    for i in range(50000):# TODO: make this bigger later
+        A = random.randint(0, biggest_32_bit)
+        B = random.randint(0, biggest_32_bit)
+        Cin = random.randint(0,1)
+        C = format(A+B+Cin, '032b')
+        V = 0
+        if (len(C) > 32):
+            V = 1
+            C = C[1:]
+    #print(format(A,"032b") + " " + format(B,"032b") + " " + str(Cin) + "   " + C + " " + str(V))
+        f.write(format(A,"032b") + " " + format(B,"032b") + " " + str(Cin) + "   " + C + " " + str(V) + "\n")
     f.close()
 
 left_shift_test()
 right_shift_test()
+adder_test()
 
 
