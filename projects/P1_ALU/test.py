@@ -62,33 +62,31 @@ def twos_comp(val, bits):
 
 def subtracter_test():
     f = open("subtracter.txt", "w")
-    print("A[32]                            B[32]                            Cin C[32]                            V\n")
-    f.write("A[32]                            B[32]                            Cin C[32]                            V\n")
+    print("A[32]                            B[32]                            C[32]                            V\n")
+    f.write("A[32]                            B[32]                            C[32]                            V\n")
     for i in range(50000):
         A = random.randint(smallest_32_signed, biggest_32_signed)
         B = random.randint(smallest_32_signed, biggest_32_signed)
         result = A - B
         C = format(result if result >= 0 else (1 << 32) + result, "032b")
         #B_twos_complement = ~B+1 & 0xF # masking to produce the inverted binary number (i.e. 1001 --> 0110)
-        Cin = 0
         V = 0
         
         # overflow during addition only happens when both numbers are of the same sign,
         # which means different signs during subtraction because subtraction is just addition
         # with the second number negated
-        
-        decimal_C = int(C,32)
-        if (decimal_C < smallest_32_signed and len(C)>32):
-            V = 1
-            C = C[1:]
-        elif (decimal_C > biggest_32_bit and len(C)>32):
-            V = 0
-            C = C[1:]
-    
         formatted_A = format(A if A >= 0 else (1 << 32) + A, "032b")
         formatted_B = format(B if B >= 0 else (1 << 32) + B, "032b")
-        print(formatted_A + " " + formatted_B + " " + str(Cin) + "   " + C + " " + str(V))
-        f.write(formatted_A + " " + formatted_B + " " + str(Cin) + "   " + C + " " + str(V) + "\n")
+        
+        decimal_C = int(C,32)
+        if (len(C) > 32):
+            if ((formatted_A[0] != formatted_B[0]) and (C[0] == formatted_B[0])):
+                V = 1
+            C = C[1:]
+    
+    
+        print(formatted_A + " " + formatted_B + " " + C + " " + str(V))
+        f.write(formatted_A + " " + formatted_B + " " + C + " " + str(V) + "\n")
     f.close()
 
 left_shift_test()
