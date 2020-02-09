@@ -3,6 +3,9 @@ import random
 biggest_32_bit = 4294967295   # for B
 biggest_5_bit = 31    # for Sa
 
+biggest_32_signed = 2147483647
+smallest_32_signed = -2147483648
+
 def left_shift(B, Sa, Cin):
     binary_B = format(B,'032b') #pads the binary form of B with leading 0 so that it's 32 bits
     return binary_B[Sa:] + Sa * str(Cin)
@@ -16,35 +19,30 @@ def right_shift(B, Sa, Op):
 
 def left_shift_test():
     f = open("left_shift_test.txt", "w")
-    #print("B[32]                            Sa[5] Cin C[32]")
     f.write("B[32]                            Sa[5] Cin C[32]\n")
     for i in range(50000):
         B = random.randint(0, biggest_32_bit)
         Sa = random.randint(0, biggest_5_bit)
         Cin = random.randint(0,1)
         C = left_shift(B, Sa, Cin)
-        #print(format(B,"032b") + " " + format(Sa,"05b") + " " + str(Cin) + "   " + C)
         f.write(format(B,"032b") + " " + format(Sa,"05b") + " " + str(Cin) + "   " + C + "\n")
     f.close()
 
 def right_shift_test():
     f = open("right_shift_test.txt", "w")
-    #print("B[32]                            Sa[5] Op C[32]\n")
     f.write("B[32]                            Sa[5] Op C[32]\n")
     for i in range(50000):
         B = random.randint(0, biggest_32_bit)
         Sa = random.randint(0, biggest_5_bit)
         Op = random.randint(0,1)
         C = right_shift(B, Sa, Op)
-        #print(format(B,"032b") + " " + format(Sa,"05b") + " " + str(Op) + "   " + C)
         f.write(format(B,"032b") + " " + format(Sa,"05b") + " " + str(Op) + "  " + C + "\n")
     f.close()
 
 def adder_test():
     f = open("adder.txt", "w")
-    #print("A[32]                            B[32]                            Cin C[32]                            V\n")
     f.write("A[32]                            B[32]                            Cin C[32]                            V\n")
-    for i in range(50000):# TODO: make this bigger later
+    for i in range(50000):
         A = random.randint(0, biggest_32_bit)
         B = random.randint(0, biggest_32_bit)
         Cin = random.randint(0,1)
@@ -53,12 +51,48 @@ def adder_test():
         if (len(C) > 32):
             V = 1
             C = C[1:]
-    #print(format(A,"032b") + " " + format(B,"032b") + " " + str(Cin) + "   " + C + " " + str(V))
         f.write(format(A,"032b") + " " + format(B,"032b") + " " + str(Cin) + "   " + C + " " + str(V) + "\n")
+    f.close()
+
+def twos_comp(val, bits):
+    """compute the 2's complement of int value val"""
+    if (val & (1 << (bits - 1))) != 0: # if sign bit is set e.g., 8bit: 128-255
+        val = val - (1 << bits)        # compute negative value
+    return val
+
+def subtracter_test():
+    f = open("subtracter.txt", "w")
+    print("A[32]                            B[32]                            Cin C[32]                            V\n")
+    f.write("A[32]                            B[32]                            Cin C[32]                            V\n")
+    for i in range(50000):
+        A = random.randint(smallest_32_signed, biggest_32_signed)
+        B = random.randint(smallest_32_signed, biggest_32_signed)
+        result = A - B
+        C = format(result if result >= 0 else (1 << 32) + result, "032b")
+        #B_twos_complement = ~B+1 & 0xF # masking to produce the inverted binary number (i.e. 1001 --> 0110)
+        Cin = 0
+        V = 0
+        
+        # overflow during addition only happens when both numbers are of the same sign,
+        # which means different signs during subtraction because subtraction is just addition
+        # with the second number negated
+        
+        decimal_C = int(C,32)
+        if (decimal_C < smallest_32_signed and len(C)>32):
+            V = 1
+            C = C[1:]
+        elif (decimal_C > biggest_32_bit and len(C)>32):
+            V = 0
+            C = C[1:]
+    
+        formatted_A = format(A if A >= 0 else (1 << 32) + A, "032b")
+        formatted_B = format(B if B >= 0 else (1 << 32) + B, "032b")
+        print(formatted_A + " " + formatted_B + " " + str(Cin) + "   " + C + " " + str(V))
+        f.write(formatted_A + " " + formatted_B + " " + str(Cin) + "   " + C + " " + str(V) + "\n")
     f.close()
 
 left_shift_test()
 right_shift_test()
 adder_test()
-
+subtracter_test()
 
