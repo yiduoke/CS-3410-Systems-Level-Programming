@@ -44,7 +44,7 @@ def gt(A, B):
 def left_shift_test():
     f = open("left_shift_test.txt", "w")
     f.write("B[32]                            Sa[5] Cin C[32]\n")
-    for i in range(50000):
+    for i in range(500):
         B = random.randint(0, biggest_32_bit)
         Sa = random.randint(0, biggest_5_bit)
         Cin = random.randint(0,1)
@@ -55,7 +55,7 @@ def left_shift_test():
 def right_shift_test():
     f = open("right_shift_test.txt", "w")
     f.write("B[32]                            Sa[5] Op C[32]\n")
-    for i in range(50000):
+    for i in range(500):
         B = random.randint(0, biggest_32_bit)
         Sa = random.randint(0, biggest_5_bit)
         Op = random.randint(0,1)
@@ -66,7 +66,7 @@ def right_shift_test():
 def adder_test():
     f = open("adder.txt", "w")
     f.write("A[32]                            B[32]                            Cin C[32]                            V\n")
-    for i in range(50000):
+    for i in range(500):
         A = random.randint(smallest_32_signed, biggest_32_signed)
         B = random.randint(smallest_32_signed, biggest_32_signed)
         Cin = random.randint(0,1)
@@ -85,7 +85,7 @@ def adder_test():
 def subtracter_test():
     f = open("subtracter.txt", "w")
     f.write("A[32]                            B[32]                            C[32]                            V\n")
-    for i in range(50000):
+    for i in range(500):
         A = random.randint(smallest_32_signed, biggest_32_signed)
         B = random.randint(smallest_32_signed, biggest_32_signed)
         result = A - B
@@ -107,7 +107,7 @@ def less_test():
     f = open("less.txt", "w")
     f.write("A[32]          B[32]         C\n")
     
-    for i in range(50000):
+    for i in range(500):
         A = random.randint(smallest_32_signed, biggest_32_signed)
         B = random.randint(smallest_32_signed, biggest_32_signed)
         C = 0
@@ -121,7 +121,7 @@ def greater_test():
     f = open("greater.txt", "w")
     f.write("A[32]          B[32]         C\n")
     
-    for i in range(50000):
+    for i in range(500):
         A = random.randint(smallest_32_signed, biggest_32_signed)
         B = random.randint(smallest_32_signed, biggest_32_signed)
         C = 0
@@ -135,7 +135,7 @@ def equal_test():
     f = open("equal.txt", "w")
     f.write("A[32]          B[32]         C\n")
     
-    for i in range(50000):
+    for i in range(500):
         A = random.randint(smallest_32_signed, biggest_32_signed)
         B = random.randint(smallest_32_signed, biggest_32_signed)
         C = 0
@@ -153,7 +153,7 @@ def ALU_test():
     
     # and
     Op = "0000"
-    for i in range(5000):
+    for i in range(500):
         A = random.randint(0, biggest_32_bit)
         B = random.randint(0, biggest_32_bit)
         C = A&B
@@ -163,7 +163,7 @@ def ALU_test():
 
     #or
     Op = "0001"
-    for i in range(5000):
+    for i in range(500):
         A = random.randint(0, biggest_32_bit)
         B = random.randint(0, biggest_32_bit)
         C = A|B
@@ -173,7 +173,7 @@ def ALU_test():
 
     #shift left logical
     Op = "001x"
-    for i in range(5000):
+    for i in range(500):
         B = random.randint(0, biggest_32_bit)
         Sa = random.randint(0, biggest_5_bit)
         Cin = 0
@@ -183,7 +183,7 @@ def ALU_test():
 
     #XOR
     Op = "0100"
-    for i in range(5000):
+    for i in range(500):
         A = random.randint(0, biggest_32_bit)
         B = random.randint(0, biggest_32_bit)
         C = A^B
@@ -191,7 +191,7 @@ def ALU_test():
         f.write(str(A) + "    " + str(B) + "    " + str(Sa) + " " + str(Op) + " " + str(C) + " x" + "\n")
     #NOR
     Op = "0101"
-    for i in range(5000):
+    for i in range(500):
         A = random.randint(0, biggest_32_bit)
         B = random.randint(0, biggest_32_bit)
         C = ~(A|B)
@@ -200,7 +200,7 @@ def ALU_test():
 
     #shift left logical
     Op = "0110"
-    for i in range(5000):
+    for i in range(500):
         B = random.randint(0, biggest_32_bit)
         Sa = random.randint(0, biggest_5_bit)
         Cin = 0
@@ -210,7 +210,7 @@ def ALU_test():
 
     #shift left arithmetic
     Op = "0111"
-    for i in range(5000):
+    for i in range(500):
         B = random.randint(0, biggest_32_bit)
         Sa = random.randint(0, biggest_5_bit)
         Cin = 1
@@ -220,7 +220,7 @@ def ALU_test():
 
     # ne
     Op = "1000"
-    for i in range(5000):
+    for i in range(500):
         A = random.randint(0, biggest_32_bit)
         B = random.randint(0, biggest_32_bit)
         C = ne(A,B)
@@ -234,7 +234,7 @@ def ALU_test():
 
     # eq
     Op = "1001"
-    for i in range(5000):
+    for i in range(500):
         A = random.randint(0, biggest_32_bit)
         B = random.randint(0, biggest_32_bit)
         C = eq(A,B)
@@ -247,7 +247,7 @@ def ALU_test():
 
     # le
     Op = "1010"
-    for i in range(5000):
+    for i in range(500):
         A = random.randint(0, biggest_32_bit)
         B = random.randint(0, biggest_32_bit)
         C = le(A,B)
@@ -260,7 +260,7 @@ def ALU_test():
 
     # gt
     Op = "1011"
-    for i in range(5000):
+    for i in range(500):
         A = random.randint(0, biggest_32_bit)
         B = random.randint(0, biggest_32_bit)
         C = gt(A,B)
@@ -273,7 +273,7 @@ def ALU_test():
 
     # subtract
     Op = "110x"
-    for i in range(5000):
+    for i in range(500):
         A = random.randint(smallest_32_signed, biggest_32_signed)
         B = random.randint(smallest_32_signed, biggest_32_signed)
         result = A - B
@@ -293,7 +293,7 @@ def ALU_test():
 
     # add
     Op = "111x"
-    for i in range(5000):
+    for i in range(500):
         A = random.randint(smallest_32_signed, biggest_32_signed)
         B = random.randint(smallest_32_signed, biggest_32_signed)
         result = A+B
