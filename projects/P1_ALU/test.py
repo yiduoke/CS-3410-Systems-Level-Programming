@@ -260,7 +260,6 @@ def ALU_test():
         
         B = A
         f.write(str(A) + "    " + str(B) + "    " + str(Sa) + " " + str(Op) + " " + str(C) + " x" + "\n")
-    f.close()
 
     # subtract
     Op = "110x"
@@ -280,7 +279,24 @@ def ALU_test():
         if ((formatted_A[0] != formatted_B[0]) and (C[0] == formatted_B[0])):
             V = 1
         f.write(str(A) + "    " + str(B) + "    " + str(Sa) + " " + str(Op) + " " + str(C) + " x" + "\n")
-f.close()
+
+    # add
+    Op = "111x"
+    for i in range(50):
+        A = random.randint(smallest_32_signed, biggest_32_signed)
+        B = random.randint(smallest_32_signed, biggest_32_signed)
+        Cin = random.randint(0,1)
+        result = A+B+Cin
+        C = format(result if result >= 0 else (1 << 32) + result, "032b")
+        V = 0
+        
+        formatted_A = format(A if A >= 0 else (1 << 32) + A, "032b")
+        formatted_B = format(B if B >= 0 else (1 << 32) + B, "032b")
+        
+        if ((formatted_A[0] == formatted_B[0]) and (C[0] != formatted_B[0])):
+            V = 1
+        f.write(str(A) + "    " + str(B) + "    " + str(Sa) + " " + str(Op) + " " + str(C) + " x" + "\n")
+    f.close()
 
 left_shift_test()
 right_shift_test()
