@@ -289,17 +289,15 @@ def ALU_test():
         
         if ((formatted_A[0] != formatted_B[0]) and (C[0] == formatted_B[0])):
             V = 1
-        f.write(formatted(A) + "    " + formatted(B) + "    " + str(Sa) + " " + str(Op) + " " + str(C) + " x" + "\n")
+        f.write(formatted(A) + "    " + formatted(B) + "    " + str(Sa) + " " + str(Op) + " " + str(C) + " " + str(V) + "\n")
 
     # add
     Op = "111x"
     for i in range(50):
         A = random.randint(smallest_32_signed, biggest_32_signed)
         B = random.randint(smallest_32_signed, biggest_32_signed)
-        Cin = random.randint(0,1)
-        result = A+B+Cin
+        result = A+B
         C = format(result if result >= 0 else (1 << 32) + result, "032b")
-        Sa = random.randint(0, biggest_5_bit)
         V = 0
         
         formatted_A = format(A if A >= 0 else (1 << 32) + A, "032b")
@@ -307,7 +305,7 @@ def ALU_test():
         
         if ((formatted_A[0] == formatted_B[0]) and (C[0] != formatted_B[0])):
             V = 1
-        f.write(formatted(A) + "    " + formatted(B) + "    " + str(Sa) + " " + str(Op) + " " + str(C) + " x" + "\n")
+        f.write(formatted(A) + "    " + formatted(B) + "    " + str(Sa) + " " + str(Op) + " " + str(C) + " " + str(V) + "\n")
     f.close()
 
 left_shift_test()
