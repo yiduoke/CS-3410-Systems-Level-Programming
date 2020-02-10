@@ -60,7 +60,6 @@ def adder_test():
 
 def subtracter_test():
     f = open("subtracter.txt", "w")
-    print("A[32]                            B[32]                            C[32]                            V\n")
     f.write("A[32]                            B[32]                            C[32]                            V\n")
     for i in range(50000):
         A = random.randint(smallest_32_signed, biggest_32_signed)
@@ -77,8 +76,12 @@ def subtracter_test():
         
         if ((formatted_A[0] != formatted_B[0]) and (C[0] == formatted_B[0])):
             V = 1
-        print(formatted_A + " " + formatted_B + " " + C + " " + str(V))
         f.write(formatted_A + " " + formatted_B + " " + C + " " + str(V) + "\n")
+    f.close()
+
+def ALU_test():
+    f = open("ALU.txt", "w")
+    
     f.close()
 
 left_shift_test()
