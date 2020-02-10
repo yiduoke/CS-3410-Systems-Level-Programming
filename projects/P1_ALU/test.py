@@ -17,6 +17,27 @@ def right_shift(B, Sa, Op):
         Cin = binary_B[0]
     return Sa * str(Cin) + binary_B[: 32-Sa]
 
+def ne(A, B):
+    if (A != B):
+        return "00000000000000000000000000000001"
+    return "00000000000000000000000000000000"
+
+def eq(A, B):
+    if (A == B):
+        return "00000000000000000000000000000001"
+    return "00000000000000000000000000000000"
+
+def le(A, B):
+    if (A <= B):
+        return "00000000000000000000000000000001"
+    return "00000000000000000000000000000000"
+
+def gt(A, B):
+    if (A > B):
+        return "00000000000000000000000000000001"
+    return "00000000000000000000000000000000"
+
+
 def left_shift_test():
     f = open("left_shift_test.txt", "w")
     f.write("B[32]                            Sa[5] Cin C[32]\n")
@@ -109,7 +130,6 @@ def greater_test():
 
 def equal_test():
     f = open("equal.txt", "w")
-    print("A[32]          B[32]         C\n")
     f.write("A[32]          B[32]         C\n")
     
     for i in range(50000):
@@ -119,17 +139,148 @@ def equal_test():
         if (A == B):
             C = 1
         
-        print(str(A) + "    " + str(B) + "    " + str(C))
         f.write(str(A) + "    " + str(B) + "    " + str(C) + "\n")
     
-        print(str(A) + "    " + str(A) + "    " + str(1))
         f.write(str(A) + "    " + str(A) + "    " + str(1) + "\n")
     f.close()
 
 def ALU_test():
     f = open("ALU.txt", "w")
+    print("A[32]                            B[32]                            Sa[5] Op[4] C[32]                            V\n")
+    f.write("A[32]                            B[32]                            Sa[5] Op[4] C[32]                            V\n")
     
+    # and
+    Op = "0000"
+    for i in range(50):
+        A = random.randint(0, biggest_32_bit)
+        B = random.randint(0, biggest_32_bit)
+        C = A&B
+        Sa = random.randint(0, biggest_5_bit)
+        print(str(A) + "    " + str(B) + "    " + str(Sa) + " " + str(Op) + " " + str(C) + " x")
+        f.write(str(A) + "    " + str(B) + "    " + str(Sa) + " " + str(Op) + " " + str(C) + " x" + "\n")
+
+    #or
+    Op = "0001"
+    for i in range(50):
+        A = random.randint(0, biggest_32_bit)
+        B = random.randint(0, biggest_32_bit)
+        C = A|B
+        Sa = random.randint(0, biggest_5_bit)
+        print(str(A) + "    " + str(B) + "    " + str(Sa) + " " + str(Op) + " " + str(C) + " x")
+        f.write(str(A) + "    " + str(B) + "    " + str(Sa) + " " + str(Op) + " " + str(C) + " x" + "\n")
+
+    #shift left logical
+    Op = "001x"
+    for i in range(50):
+        B = random.randint(0, biggest_32_bit)
+        Sa = random.randint(0, biggest_5_bit)
+        Cin = 0
+        C = left_shift(B, Sa, Cin)
+        print(str(A) + "    " + str(B) + "    " + str(Sa) + " " + str(Op) + " " + str(C) + " x")
+        f.write(str(A) + "    " + str(B) + "    " + str(Sa) + " " + str(Op) + " " + str(C) + " x" + "\n")
+
+    #XOR
+    Op = "0100"
+    for i in range(50):
+        A = random.randint(0, biggest_32_bit)
+        B = random.randint(0, biggest_32_bit)
+        C = A^B
+        print(str(A) + "    " + str(B) + "    " + str(Sa) + " " + str(Op) + " " + str(C) + " x")
+        f.write(str(A) + "    " + str(B) + "    " + str(Sa) + " " + str(Op) + " " + str(C) + " x" + "\n")
+    #NOR
+    Op = "0101"
+    for i in range(50):
+        A = random.randint(0, biggest_32_bit)
+        B = random.randint(0, biggest_32_bit)
+        C = ~(A|B)
+        print(str(A) + "    " + str(B) + "    " + str(Sa) + " " + str(Op) + " " + str(C) + " x")
+        f.write(str(A) + "    " + str(B) + "    " + str(Sa) + " " + str(Op) + " " + str(C) + " x" + "\n")
+
+    #shift left logical
+    Op = "0110"
+    for i in range(50):
+        B = random.randint(0, biggest_32_bit)
+        Sa = random.randint(0, biggest_5_bit)
+        Cin = 0
+        C = right_shift(B, Sa, Cin)
+        print(str(A) + "    " + str(B) + "    " + str(Sa) + " " + str(Op) + " " + str(C) + " x")
+        f.write(str(A) + "    " + str(B) + "    " + str(Sa) + " " + str(Op) + " " + str(C) + " x" + "\n")
+
+    #shift left arithmetic
+    Op = "0111"
+    for i in range(50):
+        B = random.randint(0, biggest_32_bit)
+        Sa = random.randint(0, biggest_5_bit)
+        Cin = 1
+        C = right_shift(B, Sa, Cin)
+        print(str(A) + "    " + str(B) + "    " + str(Sa) + " " + str(Op) + " " + str(C) + " x")
+        f.write(str(A) + "    " + str(B) + "    " + str(Sa) + " " + str(Op) + " " + str(C) + " x" + "\n")
+
+    # ne
+    Op = "1000"
+    for i in range(50):
+        A = random.randint(0, biggest_32_bit)
+        B = random.randint(0, biggest_32_bit)
+        C = ne(A,B)
+        print(str(A) + "    " + str(B) + "    " + str(Sa) + " " + str(Op) + " " + str(C) + " x")
+        f.write(str(A) + "    " + str(B) + "    " + str(Sa) + " " + str(Op) + " " + str(C) + " x" + "\n")
+        
+        B = A
+        f.write(str(A) + "    " + str(B) + "    " + str(Sa) + " " + str(Op) + " " + str(C) + " x" + "\n")
+
+    # eq
+    Op = "1001"
+    for i in range(50):
+        A = random.randint(0, biggest_32_bit)
+        B = random.randint(0, biggest_32_bit)
+        C = eq(A,B)
+        print(str(A) + "    " + str(B) + "    " + str(Sa) + " " + str(Op) + " " + str(C) + " x")
+        
+        B = A
+        f.write(str(A) + "    " + str(B) + "    " + str(Sa) + " " + str(Op) + " " + str(C) + " x" + "\n")
+
+    # le
+    Op = "1010"
+    for i in range(50):
+        A = random.randint(0, biggest_32_bit)
+        B = random.randint(0, biggest_32_bit)
+        C = le(A,B)
+        print(str(A) + "    " + str(B) + "    " + str(Sa) + " " + str(Op) + " " + str(C) + " x")
+        
+        B = A
+        f.write(str(A) + "    " + str(B) + "    " + str(Sa) + " " + str(Op) + " " + str(C) + " x" + "\n")
+
+    # gt
+    Op = "1011"
+    for i in range(50):
+        A = random.randint(0, biggest_32_bit)
+        B = random.randint(0, biggest_32_bit)
+        C = gt(A,B)
+        print(str(A) + "    " + str(B) + "    " + str(Sa) + " " + str(Op) + " " + str(C) + " x")
+        
+        B = A
+        f.write(str(A) + "    " + str(B) + "    " + str(Sa) + " " + str(Op) + " " + str(C) + " x" + "\n")
     f.close()
+
+    # subtract
+    Op = "110x"
+    for i in range(50):
+        A = random.randint(smallest_32_signed, biggest_32_signed)
+        B = random.randint(smallest_32_signed, biggest_32_signed)
+        result = A - B
+        C = format(result if result >= 0 else (1 << 32) + result, "032b")
+        V = 0
+        
+        # overflow during addition only happens when both numbers are of the same sign,
+        # which means different signs during subtraction because subtraction is just addition
+        # with the second number negated
+        formatted_A = format(A if A >= 0 else (1 << 32) + A, "032b")
+        formatted_B = format(B if B >= 0 else (1 << 32) + B, "032b")
+        
+        if ((formatted_A[0] != formatted_B[0]) and (C[0] == formatted_B[0])):
+            V = 1
+        f.write(str(A) + "    " + str(B) + "    " + str(Sa) + " " + str(Op) + " " + str(C) + " x" + "\n")
+f.close()
 
 left_shift_test()
 right_shift_test()
@@ -138,3 +289,4 @@ subtracter_test()
 less_test()
 greater_test()
 equal_test()
+ALU_test()
