@@ -1971,6 +1971,7 @@ end TCL_Generic;
       <a name="facing" val="west"/>
       <a name="output" val="true"/>
       <a name="width" val="32"/>
+      <a name="label" val="C"/>
       <a name="labelloc" val="east"/>
     </comp>
     <comp lib="1" loc="(470,310)" name="XOR Gate">
@@ -1978,9 +1979,11 @@ end TCL_Generic;
     </comp>
     <comp lib="0" loc="(270,390)" name="Pin">
       <a name="width" val="32"/>
+      <a name="label" val="A"/>
     </comp>
     <comp lib="0" loc="(270,510)" name="Pin">
       <a name="width" val="32"/>
+      <a name="label" val="B"/>
     </comp>
     <comp lib="0" loc="(400,490)" name="Constant">
       <a name="width" val="32"/>
@@ -1993,6 +1996,7 @@ end TCL_Generic;
     <comp lib="0" loc="(740,580)" name="Pin">
       <a name="facing" val="west"/>
       <a name="output" val="true"/>
+      <a name="label" val="V"/>
       <a name="labelloc" val="east"/>
     </comp>
     <comp lib="0" loc="(290,390)" name="Splitter">
@@ -2032,201 +2036,6 @@ end TCL_Generic;
     <comp lib="8" loc="(826,82)" name="Text">
       <a name="text" val="overflow handling for subtraction:"/>
       <a name="font" val="SansSerif plain 12"/>
-    </comp>
-  </circuit>
-  <circuit name="test_subtract">
-    <a name="circuit" val="test_subtract"/>
-    <a name="clabel" val=""/>
-    <a name="clabelup" val="east"/>
-    <a name="clabelfont" val="SansSerif bold 16"/>
-    <a name="circuitnamedbox" val="true"/>
-    <a name="circuitvhdlpath" val=""/>
-    <wire from="(480,560)" to="(540,560)"/>
-    <wire from="(510,340)" to="(570,340)"/>
-    <wire from="(340,360)" to="(390,360)"/>
-    <wire from="(320,510)" to="(370,510)"/>
-    <wire from="(620,540)" to="(680,540)"/>
-    <wire from="(340,360)" to="(340,440)"/>
-    <wire from="(510,460)" to="(510,540)"/>
-    <wire from="(470,380)" to="(570,380)"/>
-    <wire from="(290,580)" to="(330,580)"/>
-    <wire from="(360,580)" to="(400,580)"/>
-    <wire from="(700,180)" to="(700,520)"/>
-    <wire from="(290,460)" to="(510,460)"/>
-    <wire from="(370,240)" to="(370,400)"/>
-    <wire from="(510,540)" to="(540,540)"/>
-    <wire from="(310,440)" to="(340,440)"/>
-    <wire from="(370,240)" to="(400,240)"/>
-    <wire from="(370,220)" to="(400,220)"/>
-    <wire from="(270,460)" to="(290,460)"/>
-    <wire from="(270,580)" to="(290,580)"/>
-    <wire from="(680,540)" to="(710,540)"/>
-    <wire from="(670,360)" to="(670,650)"/>
-    <wire from="(370,400)" to="(390,400)"/>
-    <wire from="(510,230)" to="(510,340)"/>
-    <wire from="(370,400)" to="(370,510)"/>
-    <wire from="(640,360)" to="(670,360)"/>
-    <wire from="(370,180)" to="(370,220)"/>
-    <wire from="(670,650)" to="(740,650)"/>
-    <wire from="(310,560)" to="(320,560)"/>
-    <wire from="(370,180)" to="(700,180)"/>
-    <wire from="(320,510)" to="(320,560)"/>
-    <wire from="(440,230)" to="(510,230)"/>
-    <comp lib="0" loc="(270,580)" name="Pin">
-      <a name="width" val="32"/>
-      <a name="label" val="B"/>
-    </comp>
-    <comp lib="0" loc="(270,460)" name="Pin">
-      <a name="width" val="32"/>
-      <a name="label" val="A"/>
-    </comp>
-    <comp loc="(480,560)" name="Add32"/>
-    <comp lib="0" loc="(290,460)" name="Splitter">
-      <a name="incoming" val="32"/>
-      <a name="bit0" val="1"/>
-      <a name="bit2" val="1"/>
-      <a name="bit3" val="1"/>
-      <a name="bit4" val="1"/>
-      <a name="bit5" val="1"/>
-      <a name="bit6" val="1"/>
-      <a name="bit7" val="1"/>
-      <a name="bit8" val="1"/>
-      <a name="bit9" val="1"/>
-      <a name="bit10" val="1"/>
-      <a name="bit11" val="1"/>
-      <a name="bit12" val="1"/>
-      <a name="bit13" val="1"/>
-      <a name="bit14" val="1"/>
-      <a name="bit15" val="1"/>
-      <a name="bit16" val="1"/>
-      <a name="bit17" val="1"/>
-      <a name="bit18" val="1"/>
-      <a name="bit19" val="1"/>
-      <a name="bit20" val="1"/>
-      <a name="bit21" val="1"/>
-      <a name="bit22" val="1"/>
-      <a name="bit23" val="1"/>
-      <a name="bit24" val="1"/>
-      <a name="bit25" val="1"/>
-      <a name="bit26" val="1"/>
-      <a name="bit27" val="1"/>
-      <a name="bit28" val="1"/>
-      <a name="bit29" val="1"/>
-      <a name="bit30" val="1"/>
-      <a name="bit31" val="0"/>
-    </comp>
-    <comp lib="0" loc="(400,560)" name="Constant">
-      <a name="width" val="32"/>
-    </comp>
-    <comp loc="(620,540)" name="Add32"/>
-    <comp lib="1" loc="(360,580)" name="NOT Gate">
-      <a name="width" val="32"/>
-    </comp>
-    <comp lib="0" loc="(710,540)" name="Pin">
-      <a name="facing" val="west"/>
-      <a name="output" val="true"/>
-      <a name="width" val="32"/>
-      <a name="label" val="C"/>
-      <a name="labelloc" val="east"/>
-    </comp>
-    <comp lib="1" loc="(470,380)" name="XOR Gate">
-      <a name="size" val="70"/>
-    </comp>
-    <comp lib="0" loc="(290,580)" name="Splitter">
-      <a name="incoming" val="32"/>
-      <a name="bit0" val="1"/>
-      <a name="bit2" val="1"/>
-      <a name="bit3" val="1"/>
-      <a name="bit4" val="1"/>
-      <a name="bit5" val="1"/>
-      <a name="bit6" val="1"/>
-      <a name="bit7" val="1"/>
-      <a name="bit8" val="1"/>
-      <a name="bit9" val="1"/>
-      <a name="bit10" val="1"/>
-      <a name="bit11" val="1"/>
-      <a name="bit12" val="1"/>
-      <a name="bit13" val="1"/>
-      <a name="bit14" val="1"/>
-      <a name="bit15" val="1"/>
-      <a name="bit16" val="1"/>
-      <a name="bit17" val="1"/>
-      <a name="bit18" val="1"/>
-      <a name="bit19" val="1"/>
-      <a name="bit20" val="1"/>
-      <a name="bit21" val="1"/>
-      <a name="bit22" val="1"/>
-      <a name="bit23" val="1"/>
-      <a name="bit24" val="1"/>
-      <a name="bit25" val="1"/>
-      <a name="bit26" val="1"/>
-      <a name="bit27" val="1"/>
-      <a name="bit28" val="1"/>
-      <a name="bit29" val="1"/>
-      <a name="bit30" val="1"/>
-      <a name="bit31" val="0"/>
-    </comp>
-    <comp lib="3" loc="(440,230)" name="Comparator">
-      <a name="width" val="1"/>
-    </comp>
-    <comp lib="0" loc="(740,650)" name="Pin">
-      <a name="facing" val="west"/>
-      <a name="output" val="true"/>
-      <a name="label" val="V"/>
-      <a name="labelloc" val="east"/>
-    </comp>
-    <comp lib="0" loc="(680,540)" name="Splitter">
-      <a name="incoming" val="32"/>
-      <a name="bit0" val="1"/>
-      <a name="bit2" val="1"/>
-      <a name="bit3" val="1"/>
-      <a name="bit4" val="1"/>
-      <a name="bit5" val="1"/>
-      <a name="bit6" val="1"/>
-      <a name="bit7" val="1"/>
-      <a name="bit8" val="1"/>
-      <a name="bit9" val="1"/>
-      <a name="bit10" val="1"/>
-      <a name="bit11" val="1"/>
-      <a name="bit12" val="1"/>
-      <a name="bit13" val="1"/>
-      <a name="bit14" val="1"/>
-      <a name="bit15" val="1"/>
-      <a name="bit16" val="1"/>
-      <a name="bit17" val="1"/>
-      <a name="bit18" val="1"/>
-      <a name="bit19" val="1"/>
-      <a name="bit20" val="1"/>
-      <a name="bit21" val="1"/>
-      <a name="bit22" val="1"/>
-      <a name="bit23" val="1"/>
-      <a name="bit24" val="1"/>
-      <a name="bit25" val="1"/>
-      <a name="bit26" val="1"/>
-      <a name="bit27" val="1"/>
-      <a name="bit28" val="1"/>
-      <a name="bit29" val="1"/>
-      <a name="bit30" val="1"/>
-      <a name="bit31" val="0"/>
-    </comp>
-    <comp lib="8" loc="(883,243)" name="Text">
-      <a name="text" val="and C's sign equals B's sign,"/>
-      <a name="font" val="SansSerif plain 12"/>
-    </comp>
-    <comp lib="8" loc="(865,261)" name="Text">
-      <a name="text" val="then there's overflow."/>
-      <a name="font" val="SansSerif plain 12"/>
-    </comp>
-    <comp lib="8" loc="(895,205)" name="Text">
-      <a name="text" val="overflow handling for subtraction:"/>
-      <a name="font" val="SansSerif plain 12"/>
-    </comp>
-    <comp lib="8" loc="(900,224)" name="Text">
-      <a name="text" val="If A's sign and B's sign aren't equal"/>
-      <a name="font" val="SansSerif plain 12"/>
-    </comp>
-    <comp lib="1" loc="(640,360)" name="AND Gate">
-      <a name="size" val="70"/>
     </comp>
   </circuit>
 </project>

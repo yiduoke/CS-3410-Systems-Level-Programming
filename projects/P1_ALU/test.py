@@ -43,15 +43,23 @@ def adder_test():
     f = open("adder.txt", "w")
     f.write("A[32]                            B[32]                            Cin C[32]                            V\n")
     for i in range(50000):
-        A = random.randint(0, biggest_32_bit)
-        B = random.randint(0, biggest_32_bit)
+        #A = random.randint(0, biggest_32_bit)
+        #B = random.randint(0, biggest_32_bit)
+        A = random.randint(smallest_32_signed, biggest_32_signed)
+        B = random.randint(smallest_32_signed, biggest_32_signed)
         Cin = random.randint(0,1)
-        C = format(A+B+Cin, '032b')
+        result = A+B+Cin
+        C = format(result if result >= 0 else (1 << 32) + result, "032b")
         V = 0
-        if (len(C) > 32):
+        
+        formatted_A = format(A if A >= 0 else (1 << 32) + A, "032b")
+        formatted_B = format(B if B >= 0 else (1 << 32) + B, "032b")
+        
+#        if (len(C) > 32):
+#            C = C[1:]
+        if ((formatted_A[0] == formatted_B[0]) and (C[0] != formatted_B[0])):
             V = 1
-            C = C[1:]
-        f.write(format(A,"032b") + " " + format(B,"032b") + " " + str(Cin) + "   " + C + " " + str(V) + "\n")
+        f.write(formatted_A + " " + formatted_B + " " + str(Cin) + "   " + C + " " + str(V) + "\n")
     f.close()
 
 def twos_comp(val, bits):
@@ -78,12 +86,6 @@ def subtracter_test():
         formatted_A = format(A if A >= 0 else (1 << 32) + A, "032b")
         formatted_B = format(B if B >= 0 else (1 << 32) + B, "032b")
         
-#        if (len(C) > 32):
-#            C = C[1:]
-#            if ((formatted_A[0] != formatted_B[0]) and (C[0] == formatted_B[0])):
-#                print("overflowwww")
-#            V = 1
-#        else:
         if ((formatted_A[0] != formatted_B[0]) and (C[0] == formatted_B[0])):
             V = 1
         print(formatted_A + " " + formatted_B + " " + C + " " + str(V))
