@@ -79,6 +79,21 @@ def subtracter_test():
         f.write(formatted_A + " " + formatted_B + " " + C + " " + str(V) + "\n")
     f.close()
 
+def less_test():
+    f = open("less.txt", "w")
+    print("A[32]          B[32]         C\n")
+    f.write("A[32]          B[32]         C\n")
+    
+    for i in range(50000):
+        A = random.randint(smallest_32_signed, biggest_32_signed)
+        B = random.randint(smallest_32_signed, biggest_32_signed)
+        C = 0
+        if (A < B):
+            C = 1
+        print(str(A) + "    " + str(B) + "    " + str(C))
+        f.write(str(A) + "    " + str(B) + "    " + str(C) + "\n")
+    f.close()
+
 def ALU_test():
     f = open("ALU.txt", "w")
     
@@ -88,4 +103,5 @@ left_shift_test()
 right_shift_test()
 adder_test()
 subtracter_test()
+less_test()
 
