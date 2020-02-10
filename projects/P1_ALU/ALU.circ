@@ -276,6 +276,7 @@ end TCL_Generic;
     <a name="circuitvhdlpath" val=""/>
     <wire from="(370,960)" to="(370,1030)"/>
     <wire from="(280,1350)" to="(280,1420)"/>
+    <wire from="(970,460)" to="(970,920)"/>
     <wire from="(860,940)" to="(860,950)"/>
     <wire from="(860,1500)" to="(860,1510)"/>
     <wire from="(260,240)" to="(260,380)"/>
@@ -353,7 +354,6 @@ end TCL_Generic;
     <wire from="(220,310)" to="(280,310)"/>
     <wire from="(860,1360)" to="(860,1370)"/>
     <wire from="(970,1340)" to="(970,1410)"/>
-    <wire from="(970,900)" to="(1030,900)"/>
     <wire from="(280,1560)" to="(400,1560)"/>
     <wire from="(230,1530)" to="(230,1550)"/>
     <wire from="(600,770)" to="(600,1630)"/>
@@ -457,7 +457,6 @@ end TCL_Generic;
     <wire from="(300,1110)" to="(400,1110)"/>
     <wire from="(300,1590)" to="(400,1590)"/>
     <wire from="(610,1700)" to="(850,1700)"/>
-    <wire from="(970,900)" to="(970,920)"/>
     <wire from="(350,930)" to="(390,930)"/>
     <wire from="(220,1410)" to="(770,1410)"/>
     <wire from="(450,1440)" to="(860,1440)"/>
@@ -486,6 +485,7 @@ end TCL_Generic;
     <wire from="(970,1060)" to="(970,1130)"/>
     <wire from="(970,1620)" to="(970,1690)"/>
     <wire from="(260,960)" to="(310,960)"/>
+    <wire from="(970,460)" to="(1030,460)"/>
     <wire from="(70,1310)" to="(70,1450)"/>
     <wire from="(380,420)" to="(500,420)"/>
     <wire from="(610,670)" to="(610,1700)"/>
@@ -654,13 +654,6 @@ end TCL_Generic;
     <comp lib="0" loc="(170,970)" name="Pin">
       <a name="width" val="4"/>
       <a name="label" val="Op"/>
-    </comp>
-    <comp lib="0" loc="(1030,900)" name="Pin">
-      <a name="facing" val="west"/>
-      <a name="output" val="true"/>
-      <a name="width" val="32"/>
-      <a name="label" val="C"/>
-      <a name="labelloc" val="east"/>
     </comp>
     <comp lib="0" loc="(790,1350)" name="Splitter">
       <a name="facing" val="west"/>
@@ -878,6 +871,13 @@ end TCL_Generic;
     <comp loc="(210,1310)" name="equal"/>
     <comp loc="(230,1530)" name="greater"/>
     <comp loc="(200,1450)" name="leq"/>
+    <comp lib="0" loc="(1030,460)" name="Pin">
+      <a name="facing" val="west"/>
+      <a name="output" val="true"/>
+      <a name="width" val="32"/>
+      <a name="label" val="C"/>
+      <a name="labelloc" val="east"/>
+    </comp>
   </circuit>
   <circuit name="one_bit_shifter">
     <a name="circuit" val="one_bit_shifter"/>
