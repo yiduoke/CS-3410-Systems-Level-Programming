@@ -81,7 +81,6 @@ def subtracter_test():
 
 def less_test():
     f = open("less.txt", "w")
-    print("A[32]          B[32]         C\n")
     f.write("A[32]          B[32]         C\n")
     
     for i in range(50000):
@@ -90,8 +89,41 @@ def less_test():
         C = 0
         if (A < B):
             C = 1
+        f.write(str(A) + "    " + str(B) + "    " + str(C) + "\n")
+        f.write(str(A) + "    " + str(A) + "    " + str(0) + "\n")
+    f.close()
+
+def greater_test():
+    f = open("greater.txt", "w")
+    f.write("A[32]          B[32]         C\n")
+    
+    for i in range(50000):
+        A = random.randint(smallest_32_signed, biggest_32_signed)
+        B = random.randint(smallest_32_signed, biggest_32_signed)
+        C = 0
+        if (A > B):
+            C = 1
+        f.write(str(A) + "    " + str(B) + "    " + str(C) + "\n")
+        f.write(str(A) + "    " + str(A) + "    " + str(0) + "\n")
+    f.close()
+
+def equal_test():
+    f = open("equal.txt", "w")
+    print("A[32]          B[32]         C\n")
+    f.write("A[32]          B[32]         C\n")
+    
+    for i in range(50000):
+        A = random.randint(smallest_32_signed, biggest_32_signed)
+        B = random.randint(smallest_32_signed, biggest_32_signed)
+        C = 0
+        if (A == B):
+            C = 1
+        
         print(str(A) + "    " + str(B) + "    " + str(C))
         f.write(str(A) + "    " + str(B) + "    " + str(C) + "\n")
+    
+        print(str(A) + "    " + str(A) + "    " + str(1))
+        f.write(str(A) + "    " + str(A) + "    " + str(1) + "\n")
     f.close()
 
 def ALU_test():
@@ -104,4 +136,5 @@ right_shift_test()
 adder_test()
 subtracter_test()
 less_test()
-
+greater_test()
+equal_test()
