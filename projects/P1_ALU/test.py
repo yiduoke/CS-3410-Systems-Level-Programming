@@ -43,8 +43,6 @@ def adder_test():
     f = open("adder.txt", "w")
     f.write("A[32]                            B[32]                            Cin C[32]                            V\n")
     for i in range(50000):
-        #A = random.randint(0, biggest_32_bit)
-        #B = random.randint(0, biggest_32_bit)
         A = random.randint(smallest_32_signed, biggest_32_signed)
         B = random.randint(smallest_32_signed, biggest_32_signed)
         Cin = random.randint(0,1)
@@ -55,18 +53,10 @@ def adder_test():
         formatted_A = format(A if A >= 0 else (1 << 32) + A, "032b")
         formatted_B = format(B if B >= 0 else (1 << 32) + B, "032b")
         
-#        if (len(C) > 32):
-#            C = C[1:]
         if ((formatted_A[0] == formatted_B[0]) and (C[0] != formatted_B[0])):
             V = 1
         f.write(formatted_A + " " + formatted_B + " " + str(Cin) + "   " + C + " " + str(V) + "\n")
     f.close()
-
-def twos_comp(val, bits):
-    """compute the 2's complement of int value val"""
-    if (val & (1 << (bits - 1))) != 0: # if sign bit is set e.g., 8bit: 128-255
-        val = val - (1 << bits)        # compute negative value
-    return val
 
 def subtracter_test():
     f = open("subtracter.txt", "w")
@@ -77,7 +67,6 @@ def subtracter_test():
         B = random.randint(smallest_32_signed, biggest_32_signed)
         result = A - B
         C = format(result if result >= 0 else (1 << 32) + result, "032b")
-        #B_twos_complement = ~B+1 & 0xF # masking to produce the inverted binary number (i.e. 1001 --> 0110)
         V = 0
         
         # overflow during addition only happens when both numbers are of the same sign,
