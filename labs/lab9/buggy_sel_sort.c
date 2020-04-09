@@ -36,6 +36,20 @@ void swap(long *a, long *b)
 }
 
 /**
+ * Prints the long array arr with length len to stdout.
+ */
+void print_array(long *arr, int len)
+{
+    int i = 0;
+    while (i < len)
+    {
+        printf("%ld ", arr[i]);
+        i++;
+    }
+    puts("");
+}
+
+/**
  * Performs an in-place selection sort on long array arr with length len.
  */
 void selection_sort(long *arr, int len)
@@ -45,23 +59,10 @@ void selection_sort(long *arr, int len)
     for (i = 0; i < len; i++)
     {
         swap_idx = smallest_idx(&arr[i], len - i);
-//        swap((long *)arr[i], (long *)arr[swap_idx+i]);
-        swap(&arr[i], &arr[swap_idx+i]);
+//        swap((long *)arr[i], (long *)arr[swap_idx]);
+        swap(&arr[i], &arr[swap_idx + i]);
     }
-}
-
-/**
- * Prints the long array arr with length len to stdout.
- */
-void print_array(long *arr, int len)
-{
-    int i;
-    while (i <= len)
-    {
-        printf("%ld ", arr[i]);
-        i++;
-    }
-    puts("");
+//    print_array(*arr, len);
 }
 
 /**
