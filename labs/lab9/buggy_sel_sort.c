@@ -32,6 +32,7 @@ void swap(long *a, long *b)
     long tmp = *a;
     *a = *b;
     *b = tmp;
+    
 }
 
 /**
@@ -41,11 +42,11 @@ void selection_sort(long *arr, int len)
 {
     int i, swap_idx;
 
-    for (i = 0; i < len-1; i++)
+    for (i = 0; i < len; i++)
     {
         swap_idx = smallest_idx(&arr[i], len - i);
-
-        swap((long *)arr[i], (long *)arr[swap_idx]);
+//        swap((long *)arr[i], (long *)arr[swap_idx+i]);
+        swap(&arr[i], &arr[swap_idx+i]);
     }
 }
 
