@@ -41,7 +41,7 @@ void selection_sort(long *arr, int len)
 {
     int i, swap_idx;
 
-    for (i = 0; i < len; i++)
+    for (i = 0; i < len-1; i++)
     {
         swap_idx = smallest_idx(&arr[i], len - i);
 
