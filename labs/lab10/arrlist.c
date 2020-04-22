@@ -48,7 +48,7 @@ void arraylist_insert(arraylist* a, unsigned int index, int x) {
     memmove((a->array)+(index+1), (a->array)+(index), (a->length - index)* sizeof(int));
     
     (a->array)[index] = x;
-    a->length = (a->length) + br1;
+    a->length = (a->length) + 1;
 }
 
 /*
