@@ -6,9 +6,25 @@
  * This is the solution for OrderedLink List Assignment
  */
 
+int is_letter(char character){
+    int ascii = (int) character;
+    return ((ascii >= 65 && ascii <= 90) || (ascii >= 97 && ascii <= 122));
+}
+
 node_t *new_link(char data){
     struct Link* node = NULL;
-    node -> data =  (int) data;
+    
+    if (data == 'a' || data == 'e' || data == 'i' || data == 'o' || data == 'u' || data == 'y'){
+        node -> value = 7;
+    }
+    else if (is_letter(data)){
+        node -> value = 3;
+    }
+    else{
+        node -> value = 11;
+    }
+    
+    node -> data = data;
     node -> next = NULL;
     return node;
 }
@@ -58,7 +74,21 @@ void free_list(node_t *head){
 
 //TODO: meow
 node_t *insert(char c, int v, node_t *head){
-    return NULL;
+    struct Link* previous = head;
+    struct Link* current = head -> next;
+    while (current && (v > current -> data)){
+        previous = current;
+        current = current -> next;
+    }
+    if ((previous -> value) == v){
+        previous -> value = (previous -> value) + v;
+    }
+    else{
+        struct Link* new_node = new_link(c);
+        previous -> next = new_node;
+        new_node -> next = current;
+    }
+    return head;
 }
 
 void print_list(node_t *node){
