@@ -30,7 +30,14 @@ node_t *build_reverse(char in[], int start, int end){
 
 //TODO: meow
 node_t *minus_2(node_t *head){
-    return NULL;
+    struct Link* running_penultimate = head;
+    struct Link* running_ultimate = head -> next;
+    while (running_ultimate) {
+        running_penultimate = running_ultimate;
+        running_penultimate = running_penultimate -> next;
+    }
+    free(running_penultimate);
+    return head;
 }
 
 void free_list(node_t *head){
