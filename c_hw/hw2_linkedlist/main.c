@@ -31,7 +31,7 @@ node_t *build_reverse(char in[], int start, int end){
 
 //TODO: meow
 node_t *minus_2(node_t *head){
-    reutnr NULL;
+    return NULL;
 }
 
 //TODO: meow
@@ -46,12 +46,21 @@ node_t *insert(char c, int v, node_t *head){
 
 //TODO: meow
 void print_list(node_t *node){
-    
+    while (node != NULL) {
+        printf("%d ", node -> data);
+        node = node -> next;
+    }
+    printf("\n");
 }
 
 //TODO: meow
 void print_value(node_t *node){
-    
+    int sum = 0;
+    while (node != NULL) {
+        sum += node -> data;
+        node = node -> next;
+    }
+    printf("%d\n", sum);
 }
 
 int main()
