@@ -8,13 +8,14 @@
 
 int main()
 {
-    // char someString[800]; // commented out so the code can compile [Read input into this structure]
+    char someString[800];
+    gets( someString );
 
     printf("Input a sentence: ");
     
     //TODO: Read in the input from the command line:
 
-    int len;
+//    int len;
 
     //TODO: Calculate the length of input strings
     

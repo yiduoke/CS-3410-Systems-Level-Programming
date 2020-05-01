@@ -237,8 +237,3 @@ void print_value(node_t *node){
     }
     printf("%d\n", sum);
 }
-
-
-int main(){
-    return 0;
-}
