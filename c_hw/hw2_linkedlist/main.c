@@ -28,16 +28,23 @@ node_t *build_reverse(char in[], int start, int end){
     return NULL;
 }
 
-//TODO: meow
 node_t *minus_2(node_t *head){
-    struct Link* running_penultimate = head;
-    struct Link* running_ultimate = head -> next;
-    while (running_ultimate) {
-        running_penultimate = running_ultimate;
-        running_penultimate = running_penultimate -> next;
+    if (head && (head -> next)){
+        struct Link* running_antepenultimate = head;
+        struct Link* running_penultimate = head -> next;
+        struct Link* running_ultimate = (head -> next) -> next;
+        
+        while (running_ultimate) {
+            running_antepenultimate = running_penultimate;
+            running_penultimate = running_ultimate;
+            running_ultimate = running_ultimate -> next;
+        }
+        free(running_antepenultimate);
+        return head;
     }
-    free(running_penultimate);
-    return head;
+    else{
+        return NULL;
+    }
 }
 
 void free_list(node_t *head){
