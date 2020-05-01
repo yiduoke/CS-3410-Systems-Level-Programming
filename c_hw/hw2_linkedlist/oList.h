@@ -23,7 +23,7 @@ extern node_t *new_link(char data);
 /* Functions to construct different types of lists from in[start...end]
  * (3 Types): basic, ordered, reversed
  */
-extern node_t *build_basic(char in[], int start, int end);
+extern node_t *build_basic(char in[], int start, int end); 
 extern node_t *build_ordered(char in[], int start, int end);
 extern node_t *build_reverse(char in[], int start, int end);
 

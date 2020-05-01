@@ -5,6 +5,55 @@
 /**
  * This is the solution for OrderedLink List Assignment
  */
+
+node_t *new_link(char data){
+    struct Link* node = NULL;
+    node = (struct Link*)malloc(sizeof(struct Link));
+    node -> data =  (int) data;
+    node -> next = NULL;
+    return node;
+}
+
+// TODO: meow
+node_t *build_basic(char in[], int start, int end){
+    return NULL;
+}
+
+//TODO: meow
+node_t *build_ordered(char in[], int start, int end){
+    return NULL;
+}
+
+//TODO: meow
+node_t *build_reverse(char in[], int start, int end){
+    return NULL;
+}
+
+//TODO: meow
+node_t *minus_2(node_t *head){
+    reutnr NULL;
+}
+
+//TODO: meow
+void free_list(node_t *head){
+    
+}
+
+//TODO: meow
+node_t *insert(char c, int v, node_t *head){
+    return NULL;
+}
+
+//TODO: meow
+void print_list(node_t *node){
+    
+}
+
+//TODO: meow
+void print_value(node_t *node){
+    
+}
+
 int main()
 {
     // char someString[800]; // commented out so the code can compile [Read input into this structure]
@@ -40,5 +89,6 @@ int main()
     printf("List Value: ");
     //TODO: Print value after minus2
 
+    //TODO: free all memory
     return 0;
 }
