@@ -72,22 +72,54 @@ void free_list(node_t *head){
     }
 }
 
-//TODO: meow
+
 node_t *insert(char c, int v, node_t *head){
     struct Link* previous = head;
     struct Link* current = head -> next;
+    
     while (current && (v > current -> data)){
         previous = current;
         current = current -> next;
     }
     if ((previous -> value) == v){
-        previous -> value = (previous -> value) + v;
+        if ((previous -> data) == c){
+            previous -> value = (previous -> value) + v;
+        }
+        else if (((previous -> data) > c)){
+            struct Link* new_node = new_link(c);
+            previous -> next = new_node;
+            new_node -> next = current;
+        }
+        else{
+            struct Link* new_node = new_link(c);
+            char temp_data = previous -> data;
+            int temp_value = previous -> value;
+            
+            previous -> next = new_node;
+            new_node -> next = current;
+            
+            previous -> data = c;
+            previous -> value = v;
+            
+            new_node -> data = temp_data;
+            new_node -> value = temp_value;
+        }
     }
-    else{
+    else {
         struct Link* new_node = new_link(c);
         previous -> next = new_node;
         new_node -> next = current;
     }
+    return head;
+}
+
+node_t *insert_basic(char c, int v, node_t *head){
+    struct Link* current_node = head;
+    while (current_node -> next){
+        current_node = current_node -> next;
+    }
+    struct Link* new_node = new_link(c);
+    current_node -> next = new_node;
     return head;
 }
 
