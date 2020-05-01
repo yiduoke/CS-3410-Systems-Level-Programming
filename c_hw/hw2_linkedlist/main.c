@@ -8,7 +8,6 @@
 
 node_t *new_link(char data){
     struct Link* node = NULL;
-    node = (struct Link*)malloc(sizeof(struct Link));
     node -> data =  (int) data;
     node -> next = NULL;
     return node;
@@ -34,9 +33,13 @@ node_t *minus_2(node_t *head){
     return NULL;
 }
 
-//TODO: meow
 void free_list(node_t *head){
-    
+    struct Link* temporary;
+    while(head){
+        temporary = head;
+        head = head->next;
+        free(temporary);
+    }
 }
 
 //TODO: meow
@@ -44,19 +47,17 @@ node_t *insert(char c, int v, node_t *head){
     return NULL;
 }
 
-//TODO: meow
 void print_list(node_t *node){
-    while (node != NULL) {
+    while (node) {
         printf("%d ", node -> data);
         node = node -> next;
     }
     printf("\n");
 }
 
-//TODO: meow
 void print_value(node_t *node){
     int sum = 0;
-    while (node != NULL) {
+    while (node) {
         sum += node -> data;
         node = node -> next;
     }
