@@ -10,6 +10,8 @@
  * program.
  */
 
+
+
 int is_letter(char character){
     int ascii = (int) character;
     return ((ascii >= 65 && ascii <= 90) || (ascii >= 97 && ascii <= 122));
@@ -69,13 +71,13 @@ node_t *insert_reverse(char c, int v, node_t *head){
     if ((previous->value > v) || ((previous->value == v) && (previous->data > c))){
         previous -> next = new_node;
         new_node -> next = current;
-        
+
         char temp_data = previous->data;
         int temp_value = previous->value;
-        
+
         previous->data = new_node->data;
         previous->value = new_node->value;
-        
+
         new_node->data = temp_data;
         new_node->value = temp_value;
     }
@@ -85,12 +87,18 @@ node_t *insert_reverse(char c, int v, node_t *head){
         current = current -> next;
     }
     if (current){
-        if (current -> data == c){
-            current -> value = (current -> value) + v;
-        }
-        else{
+        if(v < current->value){
             previous -> next = new_node;
             new_node -> next = current;
+        }
+        else {
+            if (c == current -> data){
+                current -> value = (current -> value) + v;
+            }
+            else{
+                previous -> next = new_node;
+                new_node -> next = current;
+            }
         }
     }
     else{
@@ -196,12 +204,18 @@ node_t *insert(char c, int v, node_t *head){
         current = current -> next;
     }
     if (current){
-        if (current -> data == c){
-            current -> value = (current -> value) + v;
-        }
-        else{
+        if(v > current->value){
             previous -> next = new_node;
             new_node -> next = current;
+        }
+        else {
+            if (c == current -> data){
+                current -> value = (current -> value) + v;
+            }
+            else{
+                previous -> next = new_node;
+                new_node -> next = current;
+            }
         }
     }
     else{
