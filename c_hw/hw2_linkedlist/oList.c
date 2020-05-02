@@ -84,10 +84,19 @@ node_t *insert_reverse(char c, int v, node_t *head){
         previous = current;
         current = current -> next;
     }
-    
-    previous -> next = new_node;
-    new_node -> next = current;
-    
+    if (current){
+        if (current -> data == c){
+            current -> value = (current -> value) + v;
+        }
+        else{
+            previous -> next = new_node;
+            new_node -> next = current;
+        }
+    }
+    else{
+        previous -> next = new_node;
+        new_node -> next = current;
+    }
     return head;
 }
 
@@ -186,11 +195,19 @@ node_t *insert(char c, int v, node_t *head){
         previous = current;
         current = current -> next;
     }
-    
-    
-    previous -> next = new_node;
-    new_node -> next = current;
-    
+    if (current){
+        if (current -> data == c){
+            current -> value = (current -> value) + v;
+        }
+        else{
+            previous -> next = new_node;
+            new_node -> next = current;
+        }
+    }
+    else{
+        previous -> next = new_node;
+        new_node -> next = current;
+    }
     return head;
 }
 
