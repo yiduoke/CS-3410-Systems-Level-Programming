@@ -29,9 +29,9 @@ int main()
     printf("Basic link-list: ");
     print_list(basic_linked_list);
 
-    //TODO: Build ordered list structure
+    struct Link* ordered_linked_list = build_ordered(someString, 0, length);
     printf("Ordered link-list: ");
-    //TODO: Print the ordered list structure
+    print_list(ordered_linked_list);
 
     //TODO: Build reverse list structure
     printf("Reverse link-list: ");

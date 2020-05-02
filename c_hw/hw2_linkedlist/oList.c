@@ -118,7 +118,7 @@ node_t *build_basic(char in[], int start, int end){
 }
 
 node_t *build_ordered(char in[], int start, int end){
-    struct Link* head = NULL;
+    struct Link* head = new_link(in[start]);
     int i;
     for (i = start; i < end; i++){
         head = insert(in[i], (int)in[i], head);
@@ -127,7 +127,7 @@ node_t *build_ordered(char in[], int start, int end){
 }
 
 node_t *build_reverse(char in[], int start, int end){
-    struct Link* head = NULL;
+    struct Link* head = new_link(in[start]);
     int i;
     for (i = start; i < end; i++){
         head = insert_reverse(in[i], (int)in[i], head);
@@ -219,7 +219,7 @@ void print_list(node_t *node){
 void print_value(node_t *node){
     int sum = 0;
     while (node) {
-        sum += node -> data;
+        sum += node -> value;
         node = node -> next;
     }
     printf("%d\n", sum);
