@@ -8,8 +8,11 @@
 
 int string_length(char string[]){
     int c = 0;
-    while (string[c] != '\0' && string[c] != '\n'){
+    while (string[c] != '\0' && string[c] != '\n' && string[c] != '\r'){
         c++;
+    }
+    if (c==3 && (int)string[0] == 40 && (int)string[1] == 30 && (int)string[2] == 96){
+        return 0;
     }
     return c;
 }
@@ -20,9 +23,11 @@ int main()
 
     printf("Input a sentence: ");
     fgets(someString, sizeof(someString) , stdin);
+//    scanf("%s", someString);
+//   scanf("%[^\n]",someString);
 
     int length = string_length(someString);
-    
+
     struct Link* basic_linked_list = build_basic(someString, 0, length);
     printf("Basic link-list: ");
     print_list(basic_linked_list);
