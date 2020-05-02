@@ -98,11 +98,17 @@ node_t *insert_reverse(char c, int v, node_t *head){
 
 node_t *insert_basic(char c, int v, node_t *head){
     struct Link* current_node = head;
+    printf("head data: %c\n", head -> data);
     while (current_node -> next){
         if (current_node -> data == c){
             current_node -> value = (current_node -> value) + v;
+            return head;
         }
         current_node = current_node -> next;
+    }
+    if (current_node -> data == c){
+        current_node -> value = (current_node -> value) + v;
+        return head;
     }
     node_t* new_node = new_link(c);
     current_node -> next = new_node;
