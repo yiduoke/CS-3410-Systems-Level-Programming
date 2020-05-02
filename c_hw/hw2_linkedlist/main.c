@@ -17,13 +17,16 @@ int string_length(char string[]){
 int main()
 {
     char someString[800];
-    gets( someString );
+    
+    fgets(someString, sizeof(someString) , stdin);
+//    gets( someString );
 
     printf("Input a sentence: ");
+    
 
     int length = string_length(someString);
-    printf("%s\n",someString);
-    printf("%d\n", length);
+    someString[length-1] = '\0';
+    length--;
     
     struct Link* basic_linked_list = build_basic(someString, 0, length);
     printf("Basic link-list: ");
