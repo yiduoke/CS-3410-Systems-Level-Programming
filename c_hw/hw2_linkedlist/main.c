@@ -33,21 +33,23 @@ int main()
     printf("Ordered link-list: ");
     print_list(ordered_linked_list);
 
-    //TODO: Build reverse list structure
+    struct Link* reverse_linked_list = build_reverse(someString, 0, length);
     printf("Reverse link-list: ");
-    // TODO: Print the reverse of the ordered list
+    print_list(reverse_linked_list);
 
     printf("List Value: ");
-    //TODO: Print the value of the list
+    print_value(basic_linked_list);
 
 
-    //TODO: Get list after minus2
+    struct Link* minus2 = minus_2(ordered_linked_list);
     printf("List after Minus2: ");
-    //TODO: Print list after minus2
+    print_list(minus2);
 
     printf("List Value: ");
-    //TODO: Print value after minus2
+    print_value(minus2);
 
-    //TODO: free all memory
+    free_list(basic_linked_list);
+    free_list(ordered_linked_list);
+    free_list(reverse_linked_list);
     return 0;
 }

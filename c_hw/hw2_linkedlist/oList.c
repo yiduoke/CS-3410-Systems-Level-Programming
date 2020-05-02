@@ -110,8 +110,7 @@ node_t *insert_basic(char c, int v, node_t *head){
 node_t *build_basic(char in[], int start, int end){
     struct Link* head = new_link(in[start]);
     int i;
-    for (i = start+1; i < end; i++){
-        printf("\n%c\n",in[i]);
+    for (i = start + 1; i < end; i++){
         head = insert_basic(in[i], (int)in[i], head);
     }
     return head;
@@ -120,7 +119,7 @@ node_t *build_basic(char in[], int start, int end){
 node_t *build_ordered(char in[], int start, int end){
     struct Link* head = new_link(in[start]);
     int i;
-    for (i = start; i < end; i++){
+    for (i = start + 1; i < end; i++){
         head = insert(in[i], (int)in[i], head);
     }
     return head;
@@ -129,7 +128,7 @@ node_t *build_ordered(char in[], int start, int end){
 node_t *build_reverse(char in[], int start, int end){
     struct Link* head = new_link(in[start]);
     int i;
-    for (i = start; i < end; i++){
+    for (i = start + 1; i < end; i++){
         head = insert_reverse(in[i], (int)in[i], head);
     }
     return head;
