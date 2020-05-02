@@ -22,6 +22,8 @@ int main()
     printf("Input a sentence: ");
 
     int length = string_length(someString);
+    printf("%s\n",someString);
+    printf("%d\n", length);
     
     struct Link* basic_linked_list = build_basic(someString, 0, length);
     printf("Basic link-list: ");

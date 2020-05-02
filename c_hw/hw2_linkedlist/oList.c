@@ -108,9 +108,10 @@ node_t *insert_basic(char c, int v, node_t *head){
 
 
 node_t *build_basic(char in[], int start, int end){
-    struct Link* head = NULL;
+    struct Link* head = new_link(in[start]);
     int i;
-    for (i = start; i < end; i++){
+    for (i = start+1; i < end; i++){
+        printf("\n%c\n",in[i]);
         head = insert_basic(in[i], (int)in[i], head);
     }
     return head;
@@ -209,7 +210,7 @@ node_t *insert(char c, int v, node_t *head){
 
 void print_list(node_t *node){
     while (node) {
-        printf("%d ", node -> data);
+        printf("%c ", node -> data);
         node = node -> next;
     }
     printf("\n");
