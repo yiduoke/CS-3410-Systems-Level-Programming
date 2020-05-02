@@ -20,12 +20,8 @@ int main()
 
     printf("Input a sentence: ");
     fgets(someString, sizeof(someString) , stdin);
-//    gets( someString );
-    
 
     int length = string_length(someString);
-//    someString[length-1] = '\0';
-//    length--;
     
     struct Link* basic_linked_list = build_basic(someString, 0, length);
     printf("Basic link-list: ");

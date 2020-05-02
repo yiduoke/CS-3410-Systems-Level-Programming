@@ -61,27 +61,6 @@ node_t *new_node(char data){
     return node;
 }
 
-node_t *remove_duplicates(node_t *head){
-    struct Link* current = head;
-
-    if (!current){
-        return NULL;
-    }
-
-    while (current->next){
-        if (current->data == current->next->data){
-            current -> value = (current -> value) + (current->next-> value);
-            free(current->next);
-            current->next = current->next->next;
-        }
-        else{
-            current = current->next;
-        }
-    }
-    return head;
-}
-
-
 node_t *insert_reverse(char c, int v, node_t *head){
     node_t* new_node = new_link(c);
     
@@ -122,6 +101,9 @@ node_t *insert_basic(char c, int v, node_t *head){
 
 
 node_t *build_basic(char in[], int start, int end){
+    if (start==end){
+        return NULL;
+    }
     struct Link* head = new_link(in[start]);
     int i;
     for (i = start + 1; i < end; i++){
@@ -131,6 +113,9 @@ node_t *build_basic(char in[], int start, int end){
 }
 
 node_t *build_ordered(char in[], int start, int end){
+    if (start==end){
+        return NULL;
+    }
     struct Link* head = build_basic(in, start, end);
     struct Link* current_node = head;
     struct Link* output = NULL;
@@ -143,6 +128,9 @@ node_t *build_ordered(char in[], int start, int end){
 }
 
 node_t *build_reverse(char in[], int start, int end){
+    if (start==end){
+        return NULL;
+    }
     struct Link* head = build_basic(in, start, end);
     struct Link* current_node = head;
     struct Link* output = NULL;
