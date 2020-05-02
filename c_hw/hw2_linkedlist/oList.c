@@ -82,23 +82,17 @@ node_t *insert_reverse(char c, int v, node_t *head){
         new_node->value = temp_value;
     }
     
-    while (current && ((v > current -> value) || ((v == current -> value) && (c > current -> data))) && current->data != c){
+    while (current && current->data != c && (v > current -> value || (v == current -> value && c > current -> data))){
         previous = current;
         current = current -> next;
     }
     if (current){
-        if(v < current->value){
+        if (c == current -> data){
+            current -> value = (current -> value) + v;
+        }
+        else{
             previous -> next = new_node;
             new_node -> next = current;
-        }
-        else {
-            if (c == current -> data){
-                current -> value = (current -> value) + v;
-            }
-            else{
-                previous -> next = new_node;
-                new_node -> next = current;
-            }
         }
     }
     else{
@@ -199,23 +193,17 @@ node_t *insert(char c, int v, node_t *head){
         new_node->value = temp_value;
     }
     
-    while (current && ((v < current -> value) || ((v == current -> value) && (c < current -> data))) && current->data != c){
+    while (current && current->data != c && (v < current -> value || (v == current -> value && c < current -> data))){
         previous = current;
         current = current -> next;
     }
     if (current){
-        if(v > current->value){
+        if (c == current -> data){
+            current -> value = (current -> value) + v;
+        }
+        else{
             previous -> next = new_node;
             new_node -> next = current;
-        }
-        else {
-            if (c == current -> data){
-                current -> value = (current -> value) + v;
-            }
-            else{
-                previous -> next = new_node;
-                new_node -> next = current;
-            }
         }
     }
     else{
