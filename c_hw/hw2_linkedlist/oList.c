@@ -64,14 +64,30 @@ node_t *insert_reverse(char c, int v, node_t *head){
     struct Link* previous = head;
     struct Link* current = head -> next;
     
+    node_t* new_node = new_link(c);
+    
+    if ((previous->value > v) || ((previous->value == v) && (previous->data > c))){
+        previous -> next = new_node;
+        new_node -> next = current;
+        
+        char temp_data = previous->data;
+        int temp_value = previous->value;
+        
+        previous->data = new_node->data;
+        previous->value = new_node->value;
+        
+        new_node->data = temp_data;
+        new_node->value = temp_value;
+    }
+    
     while (current && ((v > current -> value) || ((v == current -> value) && (c > current -> data)))){
         previous = current;
         current = current -> next;
     }
     
-    node_t* new_node = new_link(c);
     previous -> next = new_node;
     new_node -> next = current;
+    
     return head;
 }
 
@@ -150,14 +166,31 @@ node_t *insert(char c, int v, node_t *head){
     struct Link* previous = head;
     struct Link* current = head -> next;
     
+    node_t* new_node = new_link(c);
+    
+    if ((previous->value < v) || ((previous->value == v) && (previous->data < c))){
+        previous -> next = new_node;
+        new_node -> next = current;
+        
+        char temp_data = previous->data;
+        int temp_value = previous->value;
+        
+        previous->data = new_node->data;
+        previous->value = new_node->value;
+        
+        new_node->data = temp_data;
+        new_node->value = temp_value;
+    }
+    
     while (current && ((v < current -> value) || ((v == current -> value) && (c < current -> data)))){
         previous = current;
         current = current -> next;
     }
     
-    node_t* new_node = new_link(c);
+    
     previous -> next = new_node;
     new_node -> next = current;
+    
     return head;
 }
 
