@@ -93,7 +93,7 @@ node_t *insert_reverse(char c, int v, node_t *head){
     
     struct Link* current = head;
     
-    while (current->next && (current->next->value < v || (current->next->value == v && c < current->next-> data < c))){
+    while (current->next && current->next->data != c && (current->next->value < v || (current->next->value == v && c < current->next-> data < c))){
         current = current -> next;
     }
 
@@ -184,7 +184,7 @@ node_t *insert(char c, int v, node_t *head){
     
     struct Link* current = head;
     
-    while (current->next && (current->next->value > v || (current->next->value == v && c < current->next-> data > c))){
+    while (current->next && current->next->data != c && (current->next->value > v || (current->next->value == v && c < current->next-> data > c))){
         
         current = current -> next;
     }
