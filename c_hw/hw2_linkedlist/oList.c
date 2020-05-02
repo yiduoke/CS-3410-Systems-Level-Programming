@@ -15,13 +15,17 @@ int is_letter(char character){
     return ((ascii >= 65 && ascii <= 90) || (ascii >= 97 && ascii <= 122));
 }
 
+int is_vowel(char data){
+    return (data == 'a' || data == 'e' || data == 'i' || data == 'o' || data == 'u' || data == 'y' || data == 'A' || data == 'E' || data == 'I' || data == 'O' || data == 'U' || data == 'Y');
+}
+
 node_t *new_link(char data)
 {
     node_t* node = (node_t*)malloc(sizeof(node_t));
     node->data = data;
 //    node->value= 0;////////////////
     
-    if (data == 'a' || data == 'e' || data == 'i' || data == 'o' || data == 'u' || data == 'y'){
+    if (is_vowel(data)){
         node -> value = 7;
     }
     else if (is_letter(data)){
@@ -40,7 +44,7 @@ node_t *new_link(char data)
 node_t *new_node(char data){
     node_t* node = (node_t*)malloc(sizeof(node_t));
     
-    if (data == 'a' || data == 'e' || data == 'i' || data == 'o' || data == 'u' || data == 'y'){
+    if (is_vowel(data)){
         node -> value = 7;
     }
     else if (is_letter(data)){
