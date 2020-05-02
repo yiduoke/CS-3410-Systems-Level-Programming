@@ -87,13 +87,13 @@ node_t *insert_reverse(char c, int v, node_t *head){
     
     if (!head || head->value > v || (head->value == v && head->data > c)){
         new_node -> next = head;
-        head = new_node;
-        return head;
+        return new_node;
     }
     
     struct Link* current = head;
     
-    while (current->next && current->next->data != c && (current->next->value < v || (current->next->value == v && c < current->next-> data < c))){
+    while (current->next && (current->next->value < v || (current->next->value == v && current->next-> data < c))){
+        
         current = current -> next;
     }
 
@@ -131,21 +131,27 @@ node_t *build_basic(char in[], int start, int end){
 }
 
 node_t *build_ordered(char in[], int start, int end){
-    struct Link* head = NULL;
-    int i;
-    for (i = start; i < end; i++){
-        head = insert(in[i], get_value(in[i]), head);
+    struct Link* head = build_basic(in, start, end);
+    struct Link* current_node = head;
+    struct Link* output = NULL;
+    while (current_node){
+        output = insert(current_node->data, current_node->value, output);
+        current_node = current_node->next;
     }
-    return remove_duplicates(head);
+    free_list(head);
+    return output;
 }
 
 node_t *build_reverse(char in[], int start, int end){
-    struct Link* head = NULL;
-    int i;
-    for (i = start; i < end; i++){
-        head = insert_reverse(in[i], get_value(in[i]), head);
+    struct Link* head = build_basic(in, start, end);
+    struct Link* current_node = head;
+    struct Link* output = NULL;
+    while (current_node){
+        output = insert_reverse(current_node->data, current_node->value, output);
+        current_node = current_node->next;
     }
-    return remove_duplicates(head);
+    free_list(head);
+    return output;
 }
 
 node_t *minus_2(node_t *head){
@@ -178,13 +184,12 @@ node_t *insert(char c, int v, node_t *head){
     
     if (!head || head->value < v || (head->value == v && head->data < c)){
         new_node -> next = head;
-        head = new_node;
-        return head;
+        return new_node;
     }
     
     struct Link* current = head;
     
-    while (current->next && current->next->data != c && (current->next->value > v || (current->next->value == v && c < current->next-> data > c))){
+    while (current->next && (current->next->value > v || (current->next->value == v && current->next-> data > c))){
         
         current = current -> next;
     }
