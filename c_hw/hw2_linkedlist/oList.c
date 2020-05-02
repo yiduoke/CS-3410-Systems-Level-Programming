@@ -19,23 +19,23 @@ int is_vowel(char data){
     return (data == 'a' || data == 'e' || data == 'i' || data == 'o' || data == 'u' || data == 'y' || data == 'A' || data == 'E' || data == 'I' || data == 'O' || data == 'U' || data == 'Y');
 }
 
+int get_value(char data){
+    if (is_vowel(data)){
+        return 7;
+    }
+    else if (is_letter(data)){
+        return 3;
+    }
+    else{
+        return 11;
+    }
+}
+
 node_t *new_link(char data)
 {
     node_t* node = (node_t*)malloc(sizeof(node_t));
     node->data = data;
-//    node->value= 0;////////////////
-    
-    if (is_vowel(data)){
-        node -> value = 7;
-    }
-    else if (is_letter(data)){
-        node -> value = 3;
-    }
-    else{
-        node -> value = 11;
-    }
-    
-    ///////////////////
+    node -> value = get_value(data);
     node->next = NULL;
 
     return(node);
@@ -64,7 +64,7 @@ node_t *insert_reverse(char c, int v, node_t *head){
     struct Link* previous = head;
     struct Link* current = head -> next;
     
-    while (current && (v < current -> value)){
+    while (current && (v > current -> value)){
         previous = current;
         current = current -> next;
     }
@@ -93,10 +93,27 @@ node_t *insert_reverse(char c, int v, node_t *head){
         }
     }
     else {
-        node_t* new_node = new_link(c);
-        previous -> next = new_node;
-        new_node -> next = current;
+        if (((previous -> value) < v)){
+            struct Link* new_node = new_link(c);
+            previous -> next = new_node;
+            new_node -> next = current;
+        }
+        else{
+            struct Link* new_node = new_link(c);
+            char temp_data = previous -> data;
+            int temp_value = previous -> value;
+            
+            previous -> next = new_node;
+            new_node -> next = current;
+            
+            previous -> data = c;
+            previous -> value = v;
+            
+            new_node -> data = temp_data;
+            new_node -> value = temp_value;
+        }
     }
+    
     return head;
 }
 
@@ -123,7 +140,7 @@ node_t *build_basic(char in[], int start, int end){
     struct Link* head = new_link(in[start]);
     int i;
     for (i = start + 1; i < end; i++){
-        head = insert_basic(in[i], (int)in[i], head);
+        head = insert_basic(in[i], get_value(in[i]), head);
     }
     return head;
 }
@@ -132,7 +149,8 @@ node_t *build_ordered(char in[], int start, int end){
     struct Link* head = new_link(in[start]);
     int i;
     for (i = start + 1; i < end; i++){
-        head = insert(in[i], (int)in[i], head);
+        head = insert(in[i], get_value(in[i]), head);
+        printf("new head character: %c\n", head->data);
     }
     return head;
 }
@@ -141,7 +159,7 @@ node_t *build_reverse(char in[], int start, int end){
     struct Link* head = new_link(in[start]);
     int i;
     for (i = start + 1; i < end; i++){
-        head = insert_reverse(in[i], (int)in[i], head);
+        head = insert_reverse(in[i], get_value(in[i]), head);
     }
     return head;
 }
@@ -176,14 +194,10 @@ void free_list(node_t *head){
 
 
 node_t *insert(char c, int v, node_t *head){
-    if (!head){
-        return new_link(c);
-    }
-    
     struct Link* previous = head;
     struct Link* current = head -> next;
     
-    while (current && (v > current -> value)){
+    while (current && (v < current -> value)){
         previous = current;
         current = current -> next;
     }
@@ -192,6 +206,29 @@ node_t *insert(char c, int v, node_t *head){
             previous -> value = (previous -> value) + v;
         }
         else if (((previous -> data) > c)){
+            struct Link* new_node = new_link(c);
+            previous -> next = new_node;
+            new_node -> next = current;
+            printf("o took this option\n");
+        }
+        else{
+            struct Link* new_node = new_link(c);
+            char temp_data = previous -> data;
+            int temp_value = previous -> value;
+            
+            previous -> next = new_node;
+            new_node -> next = current;
+            
+            previous -> data = c;
+            previous -> value = v;
+            
+            new_node -> data = temp_data;
+            new_node -> value = temp_value;
+            printf("o took this option\n");
+        }
+    }
+    else {
+        if (((previous -> value) > v)){
             struct Link* new_node = new_link(c);
             previous -> next = new_node;
             new_node -> next = current;
@@ -211,11 +248,8 @@ node_t *insert(char c, int v, node_t *head){
             new_node -> value = temp_value;
         }
     }
-    else {
-        struct Link* new_node = new_link(c);
-        previous -> next = new_node;
-        new_node -> next = current;
-    }
+    printf("inserting %c with value %d\n", c, v);
+    print_list(head);
     return head;
 }
 
