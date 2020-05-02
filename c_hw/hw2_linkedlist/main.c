@@ -8,7 +8,7 @@
 
 int string_length(char string[]){
     int c = 0;
-    while (string[c] != '\0'){
+    while (string[c] != '\0' && string[c] != '\n'){
         c++;
     }
     return c;
@@ -17,16 +17,15 @@ int string_length(char string[]){
 int main()
 {
     char someString[800];
-    
-    fgets(someString, sizeof(someString) , stdin);
-//    gets( someString );
 
     printf("Input a sentence: ");
+    fgets(someString, sizeof(someString) , stdin);
+//    gets( someString );
     
 
     int length = string_length(someString);
-    someString[length-1] = '\0';
-    length--;
+//    someString[length-1] = '\0';
+//    length--;
     
     struct Link* basic_linked_list = build_basic(someString, 0, length);
     printf("Basic link-list: ");
