@@ -150,7 +150,6 @@ node_t *build_ordered(char in[], int start, int end){
     int i;
     for (i = start + 1; i < end; i++){
         head = insert(in[i], get_value(in[i]), head);
-        printf("new head character: %c\n", head->data);
     }
     return head;
 }
@@ -165,22 +164,18 @@ node_t *build_reverse(char in[], int start, int end){
 }
 
 node_t *minus_2(node_t *head){
-    if (head && (head -> next)){
-        struct Link* running_antepenultimate = head;
-        struct Link* running_penultimate = head -> next;
-        struct Link* running_ultimate = (head -> next) -> next;
-        
-        while (running_ultimate) {
-            running_antepenultimate = running_penultimate;
-            running_penultimate = running_ultimate;
-            running_ultimate = running_ultimate -> next;
-        }
-        free(running_antepenultimate);
-        return head;
-    }
-    else{
+    if (!head || !(head -> next) || !((head -> next)->next)){
         return NULL;
     }
+    
+    struct Link* running_antepenultimate = head;
+    while (running_antepenultimate -> next -> next-> next) {
+        running_antepenultimate = running_antepenultimate -> next;
+    }
+    struct Link* penultimate = running_antepenultimate -> next;
+    free_list(penultimate);
+    running_antepenultimate -> next = NULL;
+    return head;
 }
 
 void free_list(node_t *head){
@@ -209,7 +204,6 @@ node_t *insert(char c, int v, node_t *head){
             struct Link* new_node = new_link(c);
             previous -> next = new_node;
             new_node -> next = current;
-            printf("o took this option\n");
         }
         else{
             struct Link* new_node = new_link(c);
@@ -224,7 +218,6 @@ node_t *insert(char c, int v, node_t *head){
             
             new_node -> data = temp_data;
             new_node -> value = temp_value;
-            printf("o took this option\n");
         }
     }
     else {
@@ -248,7 +241,6 @@ node_t *insert(char c, int v, node_t *head){
             new_node -> value = temp_value;
         }
     }
-    printf("inserting %c with value %d\n", c, v);
     print_list(head);
     return head;
 }
