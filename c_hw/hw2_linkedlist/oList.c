@@ -63,6 +63,7 @@ node_t *new_node(char data){
 
 node_t *insert_reverse(char c, int v, node_t *head){
     node_t* new_node = new_link(c);
+    new_node -> value = v;
     
     if (!head || head->value > v || (head->value == v && head->data > c)){
         new_node -> next = head;
@@ -86,6 +87,10 @@ node_t *insert_basic(char c, int v, node_t *head){
     while (current_node -> next){
         if (current_node -> data == c){
             current_node -> value = (current_node -> value) + v;
+            return head;
+        }
+        if (current_node -> next -> data == c){
+            current_node -> next -> value = (current_node -> next -> value) + v;
             return head;
         }
         current_node = current_node -> next;
@@ -169,6 +174,7 @@ void free_list(node_t *head){
 
 node_t *insert(char c, int v, node_t *head){
     node_t* new_node = new_link(c);
+    new_node -> value = v;
     
     if (!head || head->value < v || (head->value == v && head->data < c)){
         new_node -> next = head;
