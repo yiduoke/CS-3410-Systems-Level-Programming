@@ -189,7 +189,7 @@ node_t *insert(char c, int v, node_t *head){
 
 void print_list(node_t *node){
     while (node) {
-        printf("%c ", node -> data);
+        printf("%c", node -> data);
         node = node -> next;
     }
     printf("\n");
