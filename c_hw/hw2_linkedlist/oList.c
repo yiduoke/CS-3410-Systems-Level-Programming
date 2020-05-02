@@ -63,19 +63,16 @@ node_t *new_node(char data){
 
 node_t *remove_duplicates(node_t *head){
     struct Link* current = head;
-  
-    struct Link* next_next;
-      
+
     if (!current){
-        return head;
+        return NULL;
     }
-  
+
     while (current->next){
         if (current->data == current->next->data){
-            next_next = current->next->next;
-            current -> value = (current -> value) + (next_next -> value);
+            current -> value = (current -> value) + (current->next-> value);
             free(current->next);
-            current->next = next_next;
+            current->next = current->next->next;
         }
         else{
             current = current->next;
