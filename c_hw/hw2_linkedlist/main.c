@@ -6,22 +6,26 @@
  * This is the solution for OrderedLink List Assignment
  */
 
+int string_length(char string[]){
+    int c = 0;
+    while (string[c] != '\0'){
+        c++;
+    }
+    return c;
+}
+
 int main()
 {
     char someString[800];
     gets( someString );
 
     printf("Input a sentence: ");
-    
-    //TODO: Read in the input from the command line:
 
-//    int len;
-
-    //TODO: Calculate the length of input strings
+    int length = string_length(someString);
     
-    //TODO: Build basic list structure
+    struct Link* basic_linked_list = build_basic(someString, 0, length);
     printf("Basic link-list: ");
-    //TODO: Print the basic list structure
+    print_list(basic_linked_list);
 
     //TODO: Build ordered list structure
     printf("Ordered link-list: ");

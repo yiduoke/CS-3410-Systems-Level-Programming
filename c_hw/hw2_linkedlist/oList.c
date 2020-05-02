@@ -15,14 +15,6 @@ int is_letter(char character){
     return ((ascii >= 65 && ascii <= 90) || (ascii >= 97 && ascii <= 122));
 }
 
-int string_length(char string[]){
-    int c = 0;
-    while (string[c] != '\0'){
-        c++;
-    }
-    return c;
-}
-
 node_t *new_link(char data)
 {
     node_t* node = (node_t*)malloc(sizeof(node_t));
@@ -116,33 +108,27 @@ node_t *insert_basic(char c, int v, node_t *head){
 
 
 node_t *build_basic(char in[], int start, int end){
-    int length = string_length(in);
-    
     struct Link* head = NULL;
     int i;
-    for (i = 0; i < length; i++){
+    for (i = start; i < end; i++){
         head = insert_basic(in[i], (int)in[i], head);
     }
     return head;
 }
 
 node_t *build_ordered(char in[], int start, int end){
-    int length = string_length(in);
-    
     struct Link* head = NULL;
     int i;
-    for (i = 0; i < length; i++){
+    for (i = start; i < end; i++){
         head = insert(in[i], (int)in[i], head);
     }
     return head;
 }
 
 node_t *build_reverse(char in[], int start, int end){
-    int length = string_length(in);
-    
     struct Link* head = NULL;
     int i;
-    for (i = 0; i < length; i++){
+    for (i = start; i < end; i++){
         head = insert_reverse(in[i], (int)in[i], head);
     }
     return head;
